@@ -18,6 +18,4 @@ git push origin master
 
 
 *다른 타자
-ls
-cd gitTestApp/
 git pull origin master -> 첫번째 타자가 수정한거 다운받기
