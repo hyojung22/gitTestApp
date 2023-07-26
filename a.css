@@ -1,0 +1,16 @@
+/* 
+
+* tracking이 안되는 파일
+    - test.html
+* 새롭게 git이 추적하는 파일
+    - a.css 
+
+1. 
+- git add .
+2.
+- git commit -m 'second commit'
+- HEAD -> 현재 최신으로 등록된 것
+
+* git은 변경된 내역만 저장한다 (과거 내역 중첩으로 저장하지 않음)
+
+*/
