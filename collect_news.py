@@ -1,7 +1,5 @@
 #이 코드는 훈련데이터 생성을 위한 코드입니다.
 
-#data_split
-from sklearn.model_selection import train_test_split
 
 #beautifulSoup
 from bs4 import BeautifulSoup as bs
@@ -80,15 +78,6 @@ for j in range(1, 1000):
 
 ###### 데이터 프레임으로 만들어서 csv로 내보내기
 
-#csv로 내보낼때는 labeling이 안되어있어 스스로 해줘야함
-
-#create_train_data(df['content'], df['label'])
-
-#df_x_train, df_x_test, df_y_train, df_y_test = train_test_split(df_x_data, df_y_data, test_size=0.3, random_state=777, stratify=df_y_data)
-
-#news_train.csv
-#news_test.csv
-
 
 
 print(news_body_list)
@@ -104,6 +93,4 @@ news = pd.DataFrame(dic)
 
 
 news.to_csv('preprocessing_news_train.csv')
-#news.to_csv('news_test.csv')
-#news
 

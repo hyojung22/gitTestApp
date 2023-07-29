@@ -15,9 +15,9 @@ from sklearn.pipeline import make_pipeline
 #GridSearchCV import
 from  sklearn.model_selection import GridSearchCV
 
-
-#df_news 주석처리
-#df_news = pd.read_csv("news.csv")
+#model saver
+import pickle
+from sklearn.externals import joblib
 
 
 
@@ -30,36 +30,27 @@ kiwi.prepare()
 #morph_analysis = lambda x: kiwi.tokenize(x) if type(x) is str else None
 #df['형태소분석결과'] = df['원문'].apply(morph_analysis)
 
-
-#나오는지 확인
-print(df_news['content'].str[:30])
+#def myTokenizer(text):
+#	kiwi.tokenizer	
+#	return kiwi.tokenize(text)
 
 
 #countVec_object
-countVec1 = CountVectorizer()
+#countVec1 = CountVectorizer(tokenizer=myTokenizer)
 
 #countVec_fit
 
-countVec1.fit(df_news['content'])
+#countVec1.fit(df_news['content'])
 
-print(countVec1.vocabulary_)
+#print(countVec1.vocabulary_)
 ###create_training_data
 ### news.csv를 news_train과 news_test로 분리하고 가공하여 재작업
+### tokenizer가 어디에 들어가는지 살펴봐야함
+### 인덱스 추가
 
-
-
-#logistic_regression모델
-logi_model = LogisticRegression()
-logi_result = cross_val_score(logi_model, X_train, y_train, cv=3)
-print(logi_result)
-print(logi_result.mean())
-svm_model = LinearSVC()
-svm_result = cross_val_score(svm_model, X_train, y_train, cv=3)
-print(svm_result)
-print(svm_result.mean())
 
 #pipeline 생성(매개변수 정해야됨)
-make_pipeline( CountVectorizer(), LogisticRegression())
+news_pipe = make_pipeline( CountVectorizer(), LogisticRegression())
 
 #GridSearchCV
 
@@ -79,6 +70,13 @@ params = {
 }
 
 #여기에 파이프라인 매개변수 넣으세요
-#grid = GridSearchCV(, params, cv=3)
+grid = GridSearchCV(news_pipe, params, cv=3)
 grid.fit(X_train, y_train)
+best_model = grid.best_estimator_
+best_model.score(X_test, y_test)
+best_model.predict(['',''])
 
+#df = pd.DataFrame([
+#    voca.keys(),
+#    voca.values()
+#])
