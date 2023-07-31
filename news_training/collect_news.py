@@ -51,7 +51,7 @@ news_body_list = []
 ##### 수집페이지
 #1만개에서 3만개 기사 수집 목표        
 
-for j in range(1, 1000):
+for j in range(101, 150):
 
 	next_page = driver.find_element(By.ID, "paging_news_result")  
 	next_page.clear()
@@ -68,7 +68,7 @@ for j in range(1, 1000):
 		#본문
 		news_body = driver.find_element(By.CSS_SELECTOR, "div.news-view-body")    
 		news_body_list.append(news_body.get_attribute("innerText"))
-		time.sleep(0.5)
+		time.sleep(2)
 		close_button = driver.find_element(By.CSS_SELECTOR, "div.modal-footer>button.btn.btn-round.btn-wh").click()  
 	#except:
     		#print("파싱완료")
@@ -92,5 +92,5 @@ pd.DataFrame(dic)
 news = pd.DataFrame(dic)
 
 
-news.to_csv('preprocessing_news_train.csv')
+news.to_csv('./news_train_data/preprocessing_news_train3.csv')
 
