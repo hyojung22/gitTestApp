@@ -51,7 +51,7 @@ news_body_list = []
 ##### 수집페이지
 #1만개에서 3만개 기사 수집 목표        
 
-for j in range(311, 499):
+for j in range(500, 699):
 
 	next_page = driver.find_element(By.ID, "paging_news_result")  
 	next_page.clear()
@@ -92,5 +92,5 @@ pd.DataFrame(dic)
 news = pd.DataFrame(dic)
 
 
-news.to_csv('./news_train_data/preprocessing_news_train6.csv')
+news.to_csv('./news_train_data/preprocessing_news_train7.csv')
 
