@@ -1,24 +1,48 @@
 
 
-from flask import Flask, jsonify
-import pandas as pd
-import json
-# model = pickle.load(open('iri.pkl', 'rb'))
+from flask import Flask, render_template, request, jsonify
+from pymongo import MongoClient
 
-
-
-news = pd.read_csv('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\Personal_Working\\news_training\\dummy.csv')
-
-list_news = news['content'].values.tolist()
-json_data = json.dumps(list_news, ensure_ascii=False).encode('utf-8')
 app = Flask(__name__)
 
-
+# MongoDB 연결 설정
+client = MongoClient('mongodb://localhost:27017')
+db = client.my_database
 
 @app.route('/')
-def main():
-    return  json_data
+def index():
+    return render_template('index.html')
 
+@app.route('/add', methods=['POST'])
+def add_data():
+    if request.method == 'POST':
+        data = request.get_json()
+        name = data['name']
+        age = data['age']
 
-if __name__ == "__main__":
+        # MongoDB에 데이터 추가
+        try:
+            collection = db['users']
+            user_data = {"name": name, "age": age}
+            collection.insert_one(user_data)
+            return jsonify({"message": "Data added successfully!"}), 201
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+@app.route('/users')
+def get_users():
+    # MongoDB에서 사용자 데이터 조회
+    try:
+        collection = db['document1']
+        users = list(collection.find())
+        return jsonify(users), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
