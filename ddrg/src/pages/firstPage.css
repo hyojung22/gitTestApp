@@ -1,0 +1,44 @@
+.startPage {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100vw;
+    height: 100vh;
+}
+
+.firstPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    /* border: 2px solid violet; */
+}
+
+.firstImg {
+    position: absolute;
+    
+    max-width: 100%;
+    /* border: 1px solid black; */
+}
+
+.secondPage {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+
+    border: 1px solid black;
+}
+.secondImg {
+    position: relative;
+    
+    margin: 1%;
+    width: 15%;
+    height: 13%;
+    border: 1px solid black;
+}   
