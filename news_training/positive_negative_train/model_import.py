@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from kiwipiepy import Kiwi
 import pandas as pd
 
 
@@ -16,7 +15,7 @@ from joblib import dump, load
 
 
 
-loaded_model = load('news_training\positive_negative_train\model.joblib')
+loaded_model = load('model.joblib')
 
 # 새로운 데이터로 예측 수행
 
