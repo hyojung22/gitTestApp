@@ -5,7 +5,7 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-# MongoDB 연결 설정
+
 client = MongoClient('mongodb://localhost:27017')
 db = client.my_database
 
@@ -31,7 +31,7 @@ def add_data():
 
 @app.route('/users')
 def get_users():
-    # MongoDB에서 사용자 데이터 조회
+   
     try:
         collection = db['document1']
         users = list(collection.find())
