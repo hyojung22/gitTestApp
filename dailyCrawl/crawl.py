@@ -170,11 +170,6 @@ lda_model = LatentDirichletAllocation(n_components=num_topics, random_state= 42)
 lda_model.fit(X)
 
 
-
-
-
-
-
 #모델 덤프
 dump(lda_model, 'lda.joblib') 
 
