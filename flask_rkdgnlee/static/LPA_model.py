@@ -3,7 +3,7 @@ import pickle
 import os
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
-
+from datetime import datetime
 
 
 ## 매일 파일을 가져와야 함
@@ -32,7 +32,8 @@ X = vectorizer.fit_transform(filtered_list)
 num_topics = 6 # 원하는 토픽의 수 설정
 lda_model = LatentDirichletAllocation(n_components=num_topics, random_state= 42)
 lda_model.fit(X)
-keyword_list= []
+# 중복제거하지 않은 토픽들 list 
+keyword_li= []
 # display 토픽 보여주기 
 def display_topic_words(lda_model, feature_names, num_top_words):
     for topic_idx, topic in enumerate(lda_model.components_):
@@ -45,22 +46,33 @@ def display_topic_words(lda_model, feature_names, num_top_words):
         # CountVectorizer 함수 할당시킨 객체에 get_feature_names()로 벡터화시킨 feature(단어들) 볼 수 있음.
         # 이 벡터화시킨 단어들(features)은 숫자-알파벳순으로 정렬되며, 단어들 순서는 fit_transform시키고 난 이후에도 동일! 
         # "문자열".join함수로 특정 문자열 사이에 끼고 문자열 합쳐줄 수 있음
-        feature_concat = " ".join([str(feature_names[i])+" "for i in top_idx[:3]])
-        keyword_list.append(feature_concat)
+        feature_concat = " ".join([str(feature_names[i])+""for i in top_idx[:2]])
+        keyword_li.append(feature_concat)
 
 feature_names = vectorizer.get_feature_names_out()
 display_topic_words(lda_model, feature_names, 15)
-# 결과로 나온 keyword_list
-keyword_df = pd.DataFrame(keyword_list)
+
+# 중복제거한 키워드들 담을 = keyword_list
+keyword_list = []
+for lii in keyword_li: 
+    uniq = list(lii.split(" "))
+    senten = " ".join(q for q in list(dict.fromkeys(uniq)))
+    keyword_list.append(senten)
+print(keyword_list)
+
+keyword_df = pd.DataFrame(keyword_list, columns= [datetime.today().strftime("%Y%m%d")])
+
+
+
 
 
 if not os.path.exists("keyword.csv"):
     keyword_df.to_csv("keyword.csv", index=False, encoding='utf-8-sig')
 else:
     exist_df = pd.read_csv("keyword.csv", encoding="utf-8-sig")
-    updated_df = pd.concat([exist_df, keyword_df], axis=1)
+    updated_df = pd.concat([exist_df, keyword_df], axis = 1)
     # 수정된 DataFrame을 CSV 파일에 저장 (mode='a'로 기존 파일에 추가)
-    updated_df.to_csv("keyword.csv", encoding="utf-8-sig", index=False, mode='a')
+    updated_df.to_csv("keyword.csv", encoding="utf-8-sig", index=False)
 
 
 # pickle로 저장 
