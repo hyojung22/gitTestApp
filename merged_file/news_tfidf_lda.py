@@ -6,12 +6,13 @@ from sklearn.decomposition import LatentDirichletAllocation
 from joblib import load
 
 lda_model = load('merged_file\lda.joblib')
+loaded_model = load('merged_file\model.joblib')
 articles = pd.read_csv("merged_file\pretrain_news_train2.csv")
 
 
 
 print(articles['content'])
-max_content_length = 100
+max_content_length = 1000
 articles['content'] = articles['content'].apply(lambda x: x[:max_content_length])
 
 print(articles)
@@ -28,6 +29,8 @@ lda_model.fit(tfidf_matrix)
 
 # 수정된 get_top_articles 함수
 article_topic_probabilities = lda_model.transform(tfidf_matrix)
+
+
 
 # 추천 기사 뽑아내는 함수 수정
 def get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommendations=5):
@@ -58,3 +61,6 @@ recommendations = get_top_articles(lda_model, tfidf_vectorizer, articles, num_re
 print("추천 기사:")
 for idx, article in enumerate(recommendations, start=1):
     print(f"{idx}. {article}")
+
+    predictions = loaded_model.predict([article])
+    print(predictions)
