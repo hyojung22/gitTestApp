@@ -8,7 +8,7 @@ from datetime import datetime
 
 ## 매일 파일을 가져와야 함
 ## 데이터 csv파일로 저장하기 
-daily_all_commu = pd.read_csv("./community_content/230802_daily_commu.csv", encoding='utf-8-sig')
+daily_all_commu = pd.read_csv("community_content\\230803_daily_commu.csv", encoding='utf-8-sig')
 daily_all_commu = daily_all_commu.loc[:, "content"].to_list()
 
 
