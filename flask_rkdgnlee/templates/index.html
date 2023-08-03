@@ -7,7 +7,7 @@
 
 <body>
     <h1>JSON Data Display</h1>
-    <div id="jsonDisplay"></div>
+    <div id="fruits"></div>
 
     <script>
         // Function to fetch JSON data
@@ -21,7 +21,21 @@
         // Function to display JSON data on the webpage
         function displayJSONData(data) {
             const jsonDisplay = document.getElementById('jsonDisplay');
-            jsonDisplay.innerHTML = JSON.stringify(data, null, 2);
+            
+            for (i=0;i<data.length;i++)
+                {
+                    if (data[i]['prediction'] == 1){
+                        
+                        
+                        const li = document.createElement("li");
+                        li.setAttribute('id', i);
+                        const textNode = document.createTextNode(JSON.stringify(data[i]['article']));
+                        li.appendChild(textNode);
+                        document.getElementById('fruits').appendChild(li)
+                    }
+                }
+            console.log(data)
+
         }
 
         // Call the fetchJSONData function when the page loads
