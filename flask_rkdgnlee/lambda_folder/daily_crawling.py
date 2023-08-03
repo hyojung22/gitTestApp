@@ -6,10 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup as bs
 import pandas as pd 
 import time
-import pickle
-import os
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.decomposition import LatentDirichletAllocation
+
+
 # 데이터 수집 시작 
 dc_list = []
 bbomppu_list = []
@@ -77,7 +75,7 @@ for j in range(16, 31):
         fm_list.append((title[0].text).strip("\t"))
     driver.find_element(By.CSS_SELECTOR, "#bd_189545458_0 > div > form > fieldset > a:nth-child(16)").click() 
     time.sleep(0.5)
-    
+
 # the qoo 수집 
 driver.get("https://theqoo.net/hot?page=1&filter_mode=normal")
 # the qoo도 7페이지 부터 페이지 순서 고정 6까지 가져오기 
@@ -123,8 +121,8 @@ driver.quit()
 daily_all_commu = pd.concat([pd.DataFrame(dc_list), pd.DataFrame(bbomppu_list), pd.DataFrame(fm_list), pd.DataFrame(eto_list), pd.DataFrame(tq_list)])
 daily_all_commu.columns = ["content"]
 
-
+print(tq_list)
 
 
 ## 데이터 csv파일로 저장하기
-daily_all_commu.to_csv("./community_content/230802_daily_commu.csv", encoding='utf-8-sig')
+daily_all_commu.to_csv("community_content\\230803_daily_commu.csv", encoding='utf-8-sig')

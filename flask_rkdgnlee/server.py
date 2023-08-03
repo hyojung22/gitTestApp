@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 from flask import Flask, jsonify
 
 import firebase_admin
 from firebase_admin import credentials, db
 from firebase_admin import firestore
 
+=======
+from flask import Flask,render_template, request
+import pickle
+import pandas as pd
+import numpy as np 
+>>>>>>> d9837c675b855fdd648239e9e878a206461af97c
 
+model = pickle.load(open("lda_model.pkl", "rb"))
 app = Flask(__name__)
+keyword_list = pd.read_csv("keyword.csv", encoding="utf-8-sig")
+keyword_list = keyword_list.iloc[:, -1].to_list()
+keywords = ""
 
+<<<<<<< HEAD
 cred = credentials.Certificate("flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json")
 
 firebase_admin.initialize_app(cred)
@@ -52,7 +64,16 @@ def bestseller():
 def festival():
 
     return jsonify(bestseller_data)
+=======
+@app.route("/")
+def main():
+    return "Hello, World!"
+
+@app.route("/keywords")
+def show_keywords():
+    return render_template("keyword_html.html", keyword_list=keyword_list)
+>>>>>>> d9837c675b855fdd648239e9e878a206461af97c
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5021)
+    app.run(port=5000, debug = True)

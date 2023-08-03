@@ -146,21 +146,7 @@ for item in daily_all_commu:
 # 총 데이터 갯수 확인
 print(len(filtered_list))
 
-# 불용어 지정. 많으면 많을 수록 좋을 듯.. 
-stopwords = ['-', 'jpg', 'ㅋ', '[ㅇㅎ]', "gif", '스압', 'ㅇㅎ', 'ㄷ', "ㅎ", ';', 'twt', 'blind', 'pann', 'gisa', '★', '☆', 'ㅠ', 'ㅜ', "manhwa", "mp4", "후방", "레전드", "주의", "JPG", 'webp', "boja"]
 
-# 불용어가 제거된 데이터를 저장할 새로운 리스트
-filtered_list = []
-
-for item in daily_all_commu:
-    for stopword in stopwords:
-        item = item.replace(stopword, '')
-    filtered_list.append(item.strip())
-
-daily_all_commu = pd.concat([pd.DataFrame(dc_list), pd.DataFrame(bbomppu_list), pd.DataFrame(fm_list), pd.DataFrame(eto_list), pd.DataFrame(tq_list)])
-daily_all_commu.columns = ["content"]
-daily_all_commu.to_csv("230801_daily_commu.csv", encoding='utf-8-sig')
-daily_all_commu = daily_all_commu.loc[:, "content"].to_list()
 
 vectorizer = CountVectorizer(max_df = 0.3, min_df = 1, stop_words="english", ngram_range=(3, 3))
 X = vectorizer.fit_transform(filtered_list)

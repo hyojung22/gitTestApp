@@ -6,9 +6,9 @@ from sklearn.decomposition import LatentDirichletAllocation
 from joblib import load
 
 lda_model = load('merged_file\lda.joblib')
-loaded_model = load('merged_file\model.joblib')
-articles = pd.read_csv("merged_file\pretrain_news_train2.csv")
 
+articles = pd.read_csv("merged_file\pretrain_news_train2.csv")
+loaded_model = load('merged_file\model.joblib')
 
 
 print(articles['content'])
