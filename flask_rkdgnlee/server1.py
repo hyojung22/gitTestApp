@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 import firebase_admin
 from firebase_admin import credentials, db
@@ -12,8 +12,6 @@ cred = credentials.Certificate("flask_rkdgnlee\\data-base-ee338-firebase-adminsd
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-# doc_ref = db.collection("users").document("alovelace")
-# doc_ref.set({"first": "Ada", "last": "Lovelace", "born": 1815})
 
 ################################################################
 def get_news_data():
@@ -32,7 +30,9 @@ def get_bestseller_data():
     return bestseller_data
 ################################################################
 
-
+@app.route("/")
+def hello_world():
+    return render_template('index.html')
 # Flask route 설정
 @app.route('/news_list')
 def news_list():

@@ -8,7 +8,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import TfidfVectorizer
 ########################################################################
 from joblib import dump, load
-#파이어베이스 접속
+# #파이어베이스 접속
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -109,21 +109,30 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 
 #adapter
 #####################################################################################
-def utf8_encode(data):
-    if isinstance(data, str):
-        return data.encode('utf-8')
-    elif isinstance(data, list):
-        return [utf8_encode(item) for item in data]
-    elif isinstance(data, dict):
-        return {key: utf8_encode(value) for key, value in data.items()}
-    else:
-        return data
+# data_list = ["ㅁㅁㄴㅇㄻㄴㅇㄻㄴㅇ리ㅏㅓ"]
+
+# # 각 요소를 UTF-8로 인코딩
+# encoded_list = [item.encode('euc-kr') for item in data_list]
+
+
+# print(encoded_list)
+
+
+
+# doc_ref = db.collection("article").document('doc_8')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
+# doc_ref.set({"article": encoded_list, "prediction": 1})
+
+
+
+
+
+
 # 딕셔너리를 Firestore에 저장
 def save_list_as_documents(collection_name, data_list):
-    utf8_encoded_list = utf8_encode(data_list)
-    for idx, article in enumerate(utf8_encoded_list):
+    # utf8_encoded_list = utf8_encode(data_list)
+    for idx, article in enumerate(data_list):
         predictions = loaded_model.predict([article])
-        predictions.tolist()
+        predictions = predictions.tolist()
         doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
         doc_ref.set({"article": article, "prediction": predictions})
 
