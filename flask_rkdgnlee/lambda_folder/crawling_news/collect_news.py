@@ -26,7 +26,7 @@ def crawling():
 	options = webdriver.ChromeOptions()
 	options.add_argument('--headless=new')
 	driver = webdriver.Chrome(options=options)
-
+	
 	url = "https://www.bigkinds.or.kr/v2/news/index.do"
 	driver.get(url)
 
@@ -50,7 +50,7 @@ def crawling():
 ##### 수집페이지
 #1만개에서 3만개 기사 수집 목표        
 
-	for j in range(1, 50):
+	for j in range(1, 5):
 
 		next_page = driver.find_element(By.ID, "paging_news_result")  
 		next_page.clear()
@@ -91,5 +91,5 @@ def crawling():
 
 	pd.DataFrame(dic)
 	news = pd.DataFrame(dic)
-	news.to_csv('flask_rkdgnlee\lambda_folder\crawling_news\\news_list.csv')
+	news.to_csv('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\news_list.csv')
 

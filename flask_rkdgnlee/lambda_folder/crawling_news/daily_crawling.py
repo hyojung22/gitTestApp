@@ -50,6 +50,7 @@ eto_list = []
 def job1():
     options = wb.ChromeOptions()
 # 창 숨기는 옵션 추가
+    
     options.add_argument("headless")
 # driver 실행
     driver = wb.Chrome(options=options)
@@ -248,7 +249,7 @@ def get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommendations=
 #####################################################################################
 # 딕셔너리를 Firestore에 저장
 def save_list_as_documents(collection_name, data_list):
-    loaded_model = load('flask_rkdgnlee\lambda_folder\crawling_news\model.joblib')
+    loaded_model = load('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\model.joblib')
     for idx, article in enumerate(data_list):
         predictions = loaded_model.predict([article])
         predictions = predictions.tolist()
@@ -260,7 +261,7 @@ def save_list_as_documents(collection_name, data_list):
 
 def main():
     sched = BlockingScheduler()
-    sched.add_job(job3,'interval', minutes=15)
+    sched.add_job(job3,'interval', minutes=30)
     sched.start()
 
 
@@ -276,6 +277,6 @@ def job3():
     save_list_as_documents("article", my_list)
 
 
-job3()
+main()
 ########################################################################################
 

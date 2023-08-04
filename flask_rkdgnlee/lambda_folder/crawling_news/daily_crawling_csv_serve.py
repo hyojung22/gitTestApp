@@ -52,8 +52,8 @@ lda_model.fit(X)
 #######################################################################################################
 
 #모델 로드
-articles = pd.read_csv("merged_file\pretrain_news_train2.csv")
-loaded_model = load('merged_file\model.joblib')
+articles = pd.read_csv("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\news_list.csv")
+loaded_model = load('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\model.joblib')
 
 
 print(articles['content'])
