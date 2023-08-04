@@ -7,7 +7,7 @@ from firebase_admin import firestore
 
 app = Flask(__name__)
 
-cred = credentials.Certificate("flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json")
+cred = credentials.Certificate("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json")
 
 firebase_admin.initialize_app(cred)
 db = firestore.client()
