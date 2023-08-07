@@ -125,4 +125,4 @@ print(tq_list)
 
 
 ## 데이터 csv파일로 저장하기
-daily_all_commu.to_csv("community_content\\230803_daily_commu.csv", encoding='utf-8-sig')
+daily_all_commu.to_csv("community_content\\230804_daily_commu.csv", encoding='utf-8-sig')
