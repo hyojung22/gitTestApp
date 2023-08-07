@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Logo from './components/Logo';
 import StartPage from './pages/StartPage';
-import Main from './pages/Main';
 import M_book from './pages/M_book'
 import M_cook from './pages/M_cook';
 import M_fashion from './pages/M_fashion';
@@ -22,7 +21,6 @@ function App() {
       {logoView && <Logo/>}
       <Routes>
         <Route path='/' element={<StartPage/>}/>
-        <Route path='/main' element={<Main/>}/>
         <Route path='/main/festival' element={<M_festival/>}/>
         <Route path='/main/book' element={<M_book/>}/>
         <Route path='/main/fashion' element={<M_fashion/>}/>
