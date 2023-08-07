@@ -1,5 +1,4 @@
 import React from 'react'
-import './Main.css'
 
 import icon1 from '../img/map.png';
 import icon2 from '../img/book.png';
