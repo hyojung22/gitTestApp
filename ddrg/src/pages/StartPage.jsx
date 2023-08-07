@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../img/짭쥐 표지-18_cut.png'
+
+
+/*
+    class를 두개 설정 
+    => 기본, 상위 fixed 
+
+    ref로 변경된 top 값을 감지 후
+    본인이 원하는 조건일때 상위 fixed로 class 변경 
+*/
 
 const StartPage = () => {
 
     const festival_img = require(`../img/축제img/${~~(Math.random()*10)+1}.jpg`);
-    const book_img = require('../img/bookcover.jpg');
+    const book_img = require('../img/bookImg.jpg');
     let logoTop = 45;
+
+    let logoRef = useRef()
 
 
     const logoStyle = {
         position:'absolute',
         width:'70%',
-        top:`${logoTop}vw`,
+        top:`${logoTop}vh`,
         left:'15%'
     }
 
@@ -23,24 +34,32 @@ const StartPage = () => {
         }
     },[])
 
-    const handleScroll = () =>{
+    const handleScroll = () =>{        
         var windowY = ~~(document.documentElement.clientHeight);
         var scrollY = ~~(document.documentElement.scrollTop);
-        logoTop = 45+scrollY/windowY;
+        // logoTop = 45-50*scrollY/windowY;
+
     }
     // logoTop 변수를 이용해서 로고의 위치를 변경하고 싶은데,
     // state를 이용하면 스크롤 할 때마다 랜더링 되면서 이미지가 바뀌고
     // let을 이용하면 logoTop이 안 변함.
+
+
+
 
   return (
     <div className='mainRange'>
         <div className='firstPage'>
             {/* 표지 이미지 합쳐서 ㅇㅇ 임시로 div */}
             <div className='coverImg'/>
-            <img src={logo} style={logoStyle}/>
+
+            {document.documentElement.scrollTop > 150 
+            ? <img src={logo} style={logoStyle} className="fixed"/>
+            : <img src={logo} style={logoStyle} className="original"/>
+            }
         </div>
         <div className='link_button_container'>
-            <img className='link_button_1' src={festival_img}/>
+            <img className='link_button_1' src={festival_img} ref={logoRef}/>
             <div className='link_button_left'>
                 <img className='link_button_2' src={book_img}/>
                 <img className='link_button_3' />
