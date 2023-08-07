@@ -1,10 +1,20 @@
-import React from 'react'
+import React from 'react';
+import Cap from '../components/cloth/Cap.jsx';
 
 const M_fashion = () => {
+  const max_height = window.innerHeight-100
+  const cap_height = max_height
+
   return (
-    <div>
-      <h1>asdflaksdflkj</h1>
-      <h1>asdflaksdflkjsdfgsfdga패션</h1>
+    <div className='fashion_range' style={{
+      height:max_height
+      }}>
+      <div className='fashion_cap' style={{
+        height:cap_height,
+        backgroundColor:'black'
+      }}>
+        <Cap></Cap>
+      </div>
     </div>
   )
 }
