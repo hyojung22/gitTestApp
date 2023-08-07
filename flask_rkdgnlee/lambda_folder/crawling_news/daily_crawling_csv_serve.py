@@ -1,19 +1,20 @@
 import pandas as pd
 import numpy as np
-from kiwipiepy import Kiwi
 
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import TfidfVectorizer
 ########################################################################
-from joblib import dump, load
+import pickle
+from gensim.models import Word2Vec
+from gensim.utils import simple_preprocess
 # #파이어베이스 접속
 import firebase_admin
 from firebase_admin import credentials, firestore
 
 #credentials
-cred = credentials.Certificate('flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json')
+cred = credentials.Certificate('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json')
 firebase_admin.initialize_app(cred)
 
 # Firestore DB 연결
@@ -22,7 +23,7 @@ db = firestore.client()
 
 
 
-daily_all_commu = pd.read_csv('flask_rkdgnlee\\community_content\\230803_daily_commu.csv')
+daily_all_commu = pd.read_csv('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\community_content\\230803_daily_commu.csv')
 
 
 daily_all_commu = daily_all_commu.loc[:, "content"].to_list()
@@ -53,7 +54,14 @@ lda_model.fit(X)
 
 #모델 로드
 articles = pd.read_csv("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\news_list.csv")
-loaded_model = load('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\model.joblib')
+
+# 저장된 모델 불러오기
+with open('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\svm_model.pkl', 'rb') as f:
+    svm_model = pickle.load(f)
+
+
+
+
 
 
 print(articles['content'])
@@ -122,21 +130,49 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 # doc_ref = db.collection("article").document('doc_8')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
 # doc_ref.set({"article": encoded_list, "prediction": 1})
 
+file_path = "C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\뉴스학습_원시데이터_14000개.xlsx"
+df = pd.read_excel(file_path)
+
+
+
+
+# 예측 결과 확인
+
+model = Word2Vec(sentences=df['content'], vector_size=100, window=5, min_count=1, workers=4)
+
+# Step 3: Convert text data into word embeddings
+embeddings = [model.wv[word] for word in filtered_list[0]]  # Example for the first sentence
+
+
+y_pred = svm_model.predict(embeddings)
+print(y_pred)
 
 
 
 
 
-# 딕셔너리를 Firestore에 저장
-def save_list_as_documents(collection_name, data_list):
-    # utf8_encoded_list = utf8_encode(data_list)
-    for idx, article in enumerate(data_list):
-        predictions = loaded_model.predict([article])
-        predictions = predictions.tolist()
-        doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
-        doc_ref.set({"article": article, "prediction": predictions})
 
 
-# Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
-save_list_as_documents("article", my_list)
+
+
+
+
+
+
+# # # 딕셔너리를 Firestore에 저장
+# def save_list_as_documents(collection_name, data_list):
+# #     # utf8_encoded_list = utf8_encode(data_list)
+#     for idx, article in enumerate(data_list):
+
+          
+
+# # Word2Vec 모델 학습
+        
+#         predictions = svm_model.predict(reduced_data)
+#         predictions = predictions.tolist()
+#         doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
+#         doc_ref.set({"article": article, "prediction": predictions})
+
+# # Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
+# save_list_as_documents("article", my_list)
 

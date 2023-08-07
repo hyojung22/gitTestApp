@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template
+from flask_cors import CORS
 
 import firebase_admin
 from firebase_admin import credentials, db
@@ -6,6 +7,9 @@ from firebase_admin import firestore
 
 
 app = Flask(__name__)
+CORS(app, 
+    resources={r'*': {'orgins': 'http://localhost:5021'}}, 
+    supports_credentials=True) # 다른 포트번호에 대한 보안 제거
 
 cred = credentials.Certificate("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json")
 
