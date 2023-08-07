@@ -5,10 +5,17 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+#pipeline
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 ########################################################################
 import pickle
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
+
+
 # #파이어베이스 접속
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -56,13 +63,15 @@ lda_model.fit(X)
 articles = pd.read_csv("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\news_list.csv")
 
 # 저장된 모델 불러오기
-with open('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\svm_model.pkl', 'rb') as f:
-    svm_model = pickle.load(f)
+# with open('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\svm_model.pkl', 'rb') as f:
+#     svm_model = pickle.load(f)
+
+# with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\rf_model.pkl", 'rb') as f:
+#     rf_model = pickle.load(f)
 
 
-
-
-
+with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\pipeline_model.pkl","rb") as f:
+    pipe_model = pickle.load(f)
 
 print(articles['content'])
 max_content_length = 1000
@@ -136,43 +145,41 @@ df = pd.read_excel(file_path)
 
 
 
+
+# naver_movie_pipe= make_pipeline( CountVectorizer(), LogisticRegression())
+# X_train = df['본문']
+# X_test = df['본문']
+# y_train = df['label']
+# y_test = df['label']
+
 # 예측 결과 확인
 
-model = Word2Vec(sentences=df['content'], vector_size=100, window=5, min_count=1, workers=4)
+# model = Word2Vec(sentences=df['content'], vector_size=100, window=5, min_count=1, workers=4)
 
 # Step 3: Convert text data into word embeddings
-embeddings = [model.wv[word] for word in filtered_list[0]]  # Example for the first sentence
+# embeddings = [model.wv[word] for word in filtered_list[0]]  # Example for the first sentence
 
-
-y_pred = svm_model.predict(embeddings)
-print(y_pred)
-
-
+# my_dict = {"content":"(서울=연합뉴스) 정아란 한지훈 기자 = 윤석열 대통령은 7일 태풍 카눈이 한반도 방향으로 북상함에 따라 2023 새만금 세계스카우트잼버리 참가자들의 안전 확보를 위한 컨틴전시 플랜(긴급 비상 계획) 점검에 들어갔다."}
+# embeddings = [model.wv[my_dict]]
 
 
 
-
-
-
-
-
-
-
-
-# # # 딕셔너리를 Firestore에 저장
-# def save_list_as_documents(collection_name, data_list):
-# #     # utf8_encoded_list = utf8_encode(data_list)
-#     for idx, article in enumerate(data_list):
+# # 딕셔너리를 Firestore에 저장
+def save_list_as_documents(collection_name, data_list):
+#     # utf8_encoded_list = utf8_encode(data_list)
+    for idx, article in enumerate(data_list):
 
           
 
-# # Word2Vec 모델 학습
+# Word2Vec 모델 학습
         
-#         predictions = svm_model.predict(reduced_data)
-#         predictions = predictions.tolist()
-#         doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
-#         doc_ref.set({"article": article, "prediction": predictions})
+        predictions = pipe_model.predict([article])
+        predictions = predictions.tolist()
+        
+        doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
+        doc_ref.set({"article": article, "prediction": predictions})
 
-# # Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
-# save_list_as_documents("article", my_list)
+# Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
+save_list_as_documents("article", my_list)
+
 
