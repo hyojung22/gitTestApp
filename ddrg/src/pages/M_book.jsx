@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './Main.css'
 import All from '../etc/all.json'
 import Book from '../components/Book.jsx'
 
@@ -33,7 +32,7 @@ const M_book = () => {
 
   return (
     <div className='center'>
-      <div>
+      <div className='book_btn_box'>
         <button onClick={()=>cellectHandle('종합',0)}>종합</button>
         <button onClick={()=>cellectHandle('소설',20)}>소설</button>
         <button onClick={()=>cellectHandle('에세이',40)}>에세이</button>
