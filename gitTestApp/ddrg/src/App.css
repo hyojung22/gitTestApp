@@ -123,7 +123,11 @@
 /* Main */
 /* .iconCon {
     display: flex;
+<<<<<<< HEAD
 <<<<<<< HEAD:ddrg/src/App.css
+=======
+<<<<<<<< HEAD:ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     flex-wrap: wrap;
 
     background-color: aqua;
@@ -142,14 +146,22 @@
     border: 1px solid black;
     border-radius: 20%;
     box-sizing: border-box;
+<<<<<<< HEAD
 =======
+=======
+========
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     justify-content: center;
 }
 .icon {
     padding: 1%;
     width: 13%;
     margin: 1%;
+<<<<<<< HEAD
 >>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+=======
+>>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
 }
 .iconImg {
     width:100%;
@@ -230,7 +242,11 @@
     .iconCon {
         width: 800px;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD:ddrg/src/App.css
+=======
+<<<<<<<< HEAD:ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     .fashion {
         width: 560px;
     }
@@ -238,13 +254,21 @@
         width: 240px;
     }
     /* M_book */
+<<<<<<< HEAD
 =======
+=======
+========
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
 
     .explain {
         width: 720px;
         height: 400px;
     }
+<<<<<<< HEAD
 >>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+=======
+>>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     .bookCase {
         width: 730px;
     }
@@ -287,7 +311,11 @@
         height: 40vw;
         background-color: aquamarine;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD:ddrg/src/App.css
+=======
+<<<<<<<< HEAD:ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     /* fashion */
     .fashion_range {
         width: 100vw;
@@ -297,11 +325,19 @@
     }
     .fashion_name {
         width: 30vw;
+<<<<<<< HEAD
 =======
     .explain {
         width: 90vw;
         height: 50vw;
 >>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+=======
+========
+    .explain {
+        width: 90vw;
+        height: 50vw;
+>>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5:gitTestApp/ddrg/src/App.css
+>>>>>>> 0d37c9426adaf19d9d6cae4bb6ce46cc0f6f41c5
     }
     .bookInfo {
         width: 30%;
