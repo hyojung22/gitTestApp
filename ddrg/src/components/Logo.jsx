@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../img/짭쥐 표지-18_cut.png'
+import img from '../img/로고.png'
 
 const Logo = () => {
   return (
@@ -13,8 +13,8 @@ const Logo = () => {
     }}>
         <img src={img} style={{
           position:'relative',
-          width:'300px', 
-          height:'60px',
+          width:'200px', 
+          height:'80px',
           right: '20px'}}/>
     </div>
   )

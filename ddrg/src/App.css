@@ -54,14 +54,24 @@
 /* M_fashion */
 .fashion_range {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
 
+    background-color: aqua;
+}
+.fashion {
+    display: flex;
+
+    overflow: hidden;
+}
+.fashion_name {
     background-color: blue;
 }
-.fashion_cap {
-    border: 5px solid black;
-    background-color: black;
+.fashion_item {
+    height: 80%;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 20%;
+    box-sizing: border-box;
 }
 /* M_book */
 .bookCase {
@@ -76,6 +86,19 @@
     align-items: center;
 
     border: 1px solid black;
+}
+.book_btn_box>button {
+    width: 90px;
+    height: 60px;
+
+    font-size: 18px;
+
+    margin: 5px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: transparent;
 }
 @media (min-width:800px){
     /* stratPage */
@@ -111,6 +134,12 @@
     /* fashion */
     .fashion_range {
         width: 800px;
+    }
+    .fashion {
+        width: 560px;
+    }
+    .fashion_name {
+        width: 240px;
     }
     /* M_book */
     .bookCase {
@@ -157,7 +186,13 @@
     }
     /* fashion */
     .fashion_range {
-        width: 800px;
+        width: 100vw;
+    }
+    .fashion {
+        width: 70vw;
+    }
+    .fashion_name {
+        width: 30vw;
     }
     /* book */
     .bookInfo {
