@@ -7,25 +7,22 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 #pipeline
-from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
+
 ########################################################################
 import pickle
-from gensim.models import Word2Vec
-from gensim.utils import simple_preprocess
+
 
 
 # #파이어베이스 접속
-import firebase_admin
-from firebase_admin import credentials, firestore
+#import firebase_admin
+#from firebase_admin import credentials, firestore
 
 #credentials
-cred = credentials.Certificate('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json')
-firebase_admin.initialize_app(cred)
+#cred = credentials.Certificate('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\data-base-ee338-firebase-adminsdk-f6bdn-b1c809dc33.json')
+#firebase_admin.initialize_app(cred)
 
 # Firestore DB 연결
-db = firestore.client()
+#db = firestore.client()
 
 
 
@@ -139,8 +136,8 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 # doc_ref = db.collection("article").document('doc_8')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
 # doc_ref.set({"article": encoded_list, "prediction": 1})
 
-file_path = "C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\뉴스학습_원시데이터_14000개.xlsx"
-df = pd.read_excel(file_path)
+# file_path = "C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\뉴스학습_원시데이터_14000개.xlsx"
+# df = pd.read_excel(file_path)
 
 
 
