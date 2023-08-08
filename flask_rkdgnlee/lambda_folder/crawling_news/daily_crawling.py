@@ -8,7 +8,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import TfidfVectorizer
-from joblib import dump, load
 import numpy as np
 from kiwipiepy import Kiwi
 import time
@@ -244,14 +243,19 @@ def get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommendations=
 
 # 추천 기사 출력
 
+import pickle
+
+with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\news_training\\pipeline_model.pkl","rb") as f:
+    pipe_model = pickle.load(f)
+
+
 
 #adapter
 #####################################################################################
 # 딕셔너리를 Firestore에 저장
 def save_list_as_documents(collection_name, data_list):
-    loaded_model = load('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\model.joblib')
     for idx, article in enumerate(data_list):
-        predictions = loaded_model.predict([article])
+        predictions = pipe_model.predict([article])
         predictions = predictions.tolist()
         doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
         doc_ref.set({"article": article, "prediction": predictions})
