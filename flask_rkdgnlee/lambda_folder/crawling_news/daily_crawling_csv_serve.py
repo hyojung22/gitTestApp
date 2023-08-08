@@ -161,22 +161,63 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 
 
 
+
 # # 딕셔너리를 Firestore에 저장
-def save_list_as_documents(collection_name, data_list):
-#     # utf8_encoded_list = utf8_encode(data_list)
-    for idx, article in enumerate(data_list):
+# def save_list_as_documents(collection_name, data_list):
+# #     # utf8_encoded_list = utf8_encode(data_list)
+#     for idx, article in enumerate(data_list):
 
           
 
-# Word2Vec 모델 학습
+# # Word2Vec 모델 학습
         
-        predictions = pipe_model.predict([article])
-        predictions = predictions.tolist()
+#         predictions = pipe_model.predict([article])
+#         predictions = predictions.tolist()
         
-        doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
-        doc_ref.set({"article": article, "prediction": predictions})
+#         doc_ref = db.collection(collection_name).document(f'doc_{idx}')  # 문서 ID를 자동 생성하려면 None 대신 None을 사용
+#         doc_ref.set({"content": article, "prediction": predictions})
 
-# Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
-save_list_as_documents("article", my_list)
+# # Firestore에 "article" 컬렉션에 딕셔너리 데이터 저장
+# save_list_as_documents("article", my_list)
 
+
+from flask_sqlalchemy import SQLAlchemy
+from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+import cx_Oracle
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from sqlalchemy import create_engine, Column, Integer, String, Boolean
+from sqlalchemy.ext.declarative import declarative_base
+
+
+# Create an engine
+engine = create_engine(f'oracle+cx_oracle://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/xe')
+
+# Create a session factory
+Session = sessionmaker(bind=engine)
+Base = declarative_base()
+
+class News(Base):
+    __tablename__ = 'news'
+    id = Column(Integer, primary_key=True)
+    content = Column(String(1500), nullable=False)
+    prediction = Column(Boolean)
+
+
+cx_Oracle.init_oracle_client(lib_dir=r"C:\\Oracle\\instantclient_19_19")
+
+
+def save_list_as_oracle(data_list):
+    with Session() as session:
+        for idx, article in enumerate(data_list):
+            predictions = pipe_model.predict([article])
+            predictions = predictions.tolist()  # Convert to a list
+            new_record = News(id=idx, content=article, prediction=predictions)
+            session.add(new_record)
+        
+        session.commit()
+        session.close()
+
+save_list_as_oracle(my_list)
 

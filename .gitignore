@@ -1,3 +1,5 @@
 
 
 flask_rkdgnlee/config.py
+
+flask_rkdgnlee/lambda_folder/crawling_news/config.py
