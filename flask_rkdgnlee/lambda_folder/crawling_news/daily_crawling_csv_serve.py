@@ -128,7 +128,7 @@ def remove_doublequotes(text):
 and_clean_list = [remove_doublequotes(s) for s in my_list]
 and_and_clean_list = [remove_doublequotes(s) for s in and_clean_list]
 
-print(and_and_clean_list)
+
 
 
 

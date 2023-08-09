@@ -57,16 +57,6 @@ CORS(app, resources={r'*': {'orgins': 'http://localhost:5021'}}, supports_creden
 #     return news_data
 
 
-for item in data:
-    if "content" in item and isinstance(item["content"], str):
-        try:
-            content_dict = json.loads(item["content"].replace("'", '"'))
-            item["content"] = content_dict
-        except json.JSONDecodeError:
-            pass
-
-print(data)
-
 
 
 
@@ -93,6 +83,9 @@ def hello_world():
 @app.route('/news_list')
 def news_list():
     news_data = get_news_data()
+
+# Converting the formatted text to JSON format
+
     json_data = json.dumps(news_data)
     return jsonify(json_data)
 

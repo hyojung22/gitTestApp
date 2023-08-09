@@ -12,24 +12,24 @@ cursor = connection.cursor()
 
 
 
-my_list = []
-def print_news_data():
-    # try:
-    cursor.execute("SELECT id, content, prediction FROM news")
-    news_contents = cursor.fetchall()
-    news_data = [
-        {'id': id, 'content': content, 'prediction': prediction}
-        for id, content, prediction in news_contents
-    ]
-    return news_data
-    # except cx_Oracle.Error as error:
-    #     print("Error:", error)
-    # finally:
-    #     cursor.close()
-    #     connection.close()
+# my_list = []
+# def print_news_data():
+#     # try:
+#     cursor.execute("SELECT id, content, prediction FROM news")
+#     news_contents = cursor.fetchall()
+#     news_data = [
+#         {'id': id, 'content': content, 'prediction': prediction}
+#         for id, content, prediction in news_contents
+#     ]
+#     return news_data
+#     # except cx_Oracle.Error as error:
+#     #     print("Error:", error)
+#     # finally:
+#     #     cursor.close()
+#     #     connection.close()
 
 
-print(print_news_data())
+# print(print_news_data())
 
 # json_data = json.dumps(print_news_data())
 
@@ -62,7 +62,12 @@ print(print_news_data())
 
 
 
+# content 컬럼의 값을 삼중쿼트로 감싸는 작업 수행
+# cursor.execute("UPDATE news SET content = '''' || content || ''''")
 
+# # 변경사항을 커밋
+# cursor.close()
+# connection.close()
 
 
 
