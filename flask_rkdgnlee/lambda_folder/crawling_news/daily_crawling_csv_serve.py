@@ -121,6 +121,18 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 
 
 
+def remove_doublequotes(text):
+    return text.replace('\"', '').replace("\'", "").replace("'", "").replace('"', '').replace("<br/>","").replace("\t","").replace("\n","")
+
+# Remove quotes from each string and create a new list
+and_clean_list = [remove_doublequotes(s) for s in my_list]
+and_and_clean_list = [remove_doublequotes(s) for s in and_clean_list]
+
+print(and_and_clean_list)
+
+
+
+
 #adapter
 #####################################################################################
 # data_list = ["ㅁㅁㄴㅇㄻㄴㅇㄻㄴㅇ리ㅏㅓ"]
@@ -181,11 +193,21 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 # save_list_as_documents("article", my_list)
 
 
-from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
-import cx_Oracle
 
-connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
-cursor = connection.cursor()
+
+
+
+# from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+# import cx_Oracle
+
+# connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+# cursor = connection.cursor()
+
+
+
+
+
+
 # Create an engine
 #engine = create_engine(f'oracle+cx_oracle://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/xe')
 
@@ -195,27 +217,36 @@ cursor = connection.cursor()
 
 
 
-def save_list_as_oracle(data_list):
-    try:
-        for idx, article in enumerate(data_list):
-            predictions = pipe_model.predict([article])
-            predictions_str = predictions.tolist()  # Convert to a list
-            update_query = (
-                f"UPDATE news "
-                f"SET content = :content, prediction = :prediction "
-                f"WHERE id = :id"
-            )
-            
-            cursor.execute(update_query, id=idx, content=article, prediction=predictions_str[idx])
-        
-        connection.commit()
-    except cx_Oracle.Error as error:
-        print("Error:", error)
-    finally:
-        cursor.close()
-        connection.close()
+# from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+# import cx_Oracle
 
-save_list_as_oracle(my_list)
+# connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+# cursor = connection.cursor()
+
+
+
+# def save_list_as_oracle(data_list):
+#     try:
+#         for idx, article in enumerate(data_list):
+            
+#             predictions = pipe_model.predict([article])
+#             prediction = predictions.tolist()  # Convert to a list
+#             insert_query = (
+#                 f"INSERT INTO news (id, content, prediction) "
+#                 f"VALUES (:id, :content, :prediction)"
+#             )
+            
+#             for pred in prediction:
+#                 cursor.execute(insert_query, id=idx, content=article, prediction=pred)
+        
+#         connection.commit()
+#     except cx_Oracle.Error as error:
+#         print("Error:", error)
+#     finally:
+#         cursor.close()
+#         connection.close()
+
+# save_list_as_oracle(and_and_clean_list)
 
 
 

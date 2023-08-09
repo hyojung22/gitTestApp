@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 
+
+
+import json
 # from flask_sqlalchemy import SQLAlchemy
 # from flask_migrate import Migrate
 from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT
@@ -52,13 +55,29 @@ CORS(app, resources={r'*': {'orgins': 'http://localhost:5021'}}, supports_creden
 #     for doc in docs:
 #         news_data.append(doc.to_dict())
 #     return news_data
+
+
+for item in data:
+    if "content" in item and isinstance(item["content"], str):
+        try:
+            content_dict = json.loads(item["content"].replace("'", '"'))
+            item["content"] = content_dict
+        except json.JSONDecodeError:
+            pass
+
+print(data)
+
+
+
+
+
 def get_news_data():
     try:
-        cursor.execute("SELECT id, content FROM news")
+        cursor.execute("SELECT id, content, prediction FROM news")
         news_contents = cursor.fetchall()
         news_data = [
-            {'id': id, 'content': content}
-            for id, content in news_contents
+            {'id': id, 'content': content, 'prediction': prediction}
+            for id, content, prediction in news_contents
         ]
         return news_data
     except cx_Oracle.Error as error:
@@ -74,7 +93,8 @@ def hello_world():
 @app.route('/news_list')
 def news_list():
     news_data = get_news_data()
-    return jsonify(news_data)
+    json_data = json.dumps(news_data)
+    return jsonify(json_data)
 
 
 
