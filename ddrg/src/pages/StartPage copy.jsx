@@ -79,28 +79,29 @@ const StartPage = () => {
                 <img className='link_button_5' src={img5}/>
             </div>
         </div>
+        <div className='link_text_container'>
+            <div className='link_text_side'>
+                <img className='link_text_1 link_text' src={text1}/>
+                <img className='link_text_2 link_text' src={text2}/>
+            </div>
+            <div className='link_text_center'>
+                <img className='link_text_31 link_text' src={text3}/>
+                <img className='link_text_32 link_text' src={text3}/>
+            </div>
+            <div className='link_text_side'>
+                <img className='link_text_4 link_text' src={text4}/>
+                <img className='link_text_5 link_text' src={text5}/>
+            </div>
+        </div>
         <div className='link_button_container'>
             <div className='link_button_side'>
-                <Link to={'/main/cook'} className='link_button_1 link_button'>
-                    <img className='link_text_1 link_text' src={text1}/>
-                </Link>
-                <Link to={'/main/fashion'} className='link_button_2 link_button'>
-                    <img className='link_text_2 link_text' src={text2}/>
-                </Link>
+                <Link to={'/main/cook'} className='link_button_1 link_button'/>
+                <Link to={'/main/fashion'} className='link_button_2 link_button'/>
             </div>
-            <div className='link_button_center'>
-                <Link to={'/main/festival'} className='link_button_3 link_button'>
-                    <img className='link_text_31 link_text' src={text3}/>
-                    <img className='link_text_32 link_text' src={text3}/>
-                </Link>
-            </div>
+            <Link to={'/main/festival'} className='link_button_3 link_button'/>
             <div className='link_button_side'>
-                <Link to={'/main/book'} className='link_button_4 link_button'>
-                    <img className='link_text_4 link_text' src={text4}/>
-                </Link>
-                <Link to={'/main/news'} className='link_button_5 link_button'>
-                    <img className='link_text_5 link_text' src={text5}/>
-                </Link>
+                <Link to={'/main/book'} className='link_button_4 link_button'/>
+                <Link to={'/main/news'} className='link_button_5 link_button'/>
             </div>
         </div>
     </div>

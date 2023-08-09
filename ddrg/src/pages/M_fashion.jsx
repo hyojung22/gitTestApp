@@ -62,7 +62,9 @@ const M_fashion = () => {
       <div className='fashion_range' style={{
         height:max_height
         }}>
-        <div className='fashion_name'/>
+        <div className='fashion_name'>
+          모자
+        </div>
         <div className='fashion' style={{
           height:piece_height
         }}>
@@ -87,8 +89,8 @@ const M_fashion = () => {
             <Item kinds='상의'/>
           </div>
         </div>
-        <div className='fashion_name'/>
-        <div className='fashion_name'/>
+        <div className='fashion_name'>상의</div>
+        <div className='fashion_name'>하의</div>
         <div className='fashion' style={{
           height:piece_height
         }}>
@@ -113,7 +115,7 @@ const M_fashion = () => {
             <Item kinds='신발'/>
           </div>
         </div>
-        <div className='fashion_name'/>
+        <div className='fashion_name'>신발</div>
       </div>
       <Explain/>
     </div>
