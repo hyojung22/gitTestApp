@@ -15,8 +15,8 @@ const Bottom = () => {
       display:'flex',
       height:'100%'
     }}>
-      {capArr.map((e, index)=>
-        (<img key={index} src={e} className='fashion_item'/>)
+      {capArr.map((e)=>
+        (<img key={e} src={e} className='fashion_item'/>)
       )}
     </div>
   )

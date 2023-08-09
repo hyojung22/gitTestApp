@@ -1,0 +1,300 @@
+/* startPage */
+.mainRange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 200vh;
+}
+.firstPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+
+    background-color: #3e448b;
+}
+.coverImg {
+    height: 80vh;
+    width:max-content;
+}
+.link_button_container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100vh;
+}
+.link_button_side {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 2;
+}
+.link_button:hover {
+    background-color: white;
+    opacity: 0.4;
+    font-size: larger;
+
+    transition: 0.7s;
+}
+
+.link_text_container {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100vh;
+}
+.link_text_side{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+}
+.link_text_center{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 300px;
+}
+.link_text {
+    position: relative;
+}
+
+
+/* center */
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo_button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    width: 70px;
+    height: 40px;
+    color: white;
+    border-left: 2px solid #9F81F7;
+}
+.cook {
+    border-right: 2px solid #9F81F7;
+}
+.logo_button:hover {
+    border-right: 2px solid #9F81F7;
+    transform: scale(1.3);
+    transition: 0.5s;
+    background-color: #3e448b;
+}
+/* M_fashion */
+.fashion_range {
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: aqua;
+}
+.fashion {
+    display: flex;
+    overflow: hidden;
+}
+.fashion_drag {
+    position: relative;
+}
+.fashion_name {
+    background-color: blue;
+}
+.fashion_item {
+    height: 80%;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 20%;
+    box-sizing: border-box;
+}
+/* M_book */
+.bookCase {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.bookInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    border: 1px solid black;
+}
+.book_btn_box>button {
+    width: 90px;
+    height: 60px;
+
+    font-size: 18px;
+
+    margin: 5px;
+    border: none;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: transparent;
+}
+@media (min-width:1000px){
+    /* stratPage */
+    .firstPage{
+        width: 1000px;
+    }
+    .link_button_container {
+        width: 1000px;
+    }
+    .link_button_1 {
+        width: 300px;
+        height: 280px;
+        margin:20px;
+    }
+    .link_button_2 {
+        width: 300px;
+        height: 280px;
+        margin:20px;
+    }
+    .link_button_3 {
+        width: 300px;
+        height: 600px;
+        margin-top: 20px;
+    }
+    .link_button_4 {
+        width: 300px;
+        height: 280px;
+        margin:20px;
+    }
+    .link_button_5 {
+        width: 300px;
+        height: 280px;
+        margin:20px;
+    }
+    .link_text {
+        width: 310px;
+        height: 90px;
+    }
+    .link_text_1 {
+        top:20px;
+        left: 65px;
+    }
+    .link_text_2 {
+        top: 440px;
+        left: -30px;
+    }
+    .link_text_31 {
+        top: 20px;
+    }
+    .link_text_32 {
+        top: 440px;
+    }
+    .link_text_4 {
+        top: 20px;
+        left: -55px;
+    }
+    .link_text_5 {
+        top: 440px;
+        left: 70px;
+    }
+    /* fashion */
+    .fashion_range {
+        width: 800px;
+    }
+    .fashion {
+        width: 560px;
+    }
+    .fashion_name {
+        width: 240px;
+    }
+    /* M_book */
+    .bookCase {
+        width: 730px;
+    }
+    .bookInfo {
+        width: 240px;
+    }
+    .bookCover {
+        width: 240px;
+        height: 290px;
+    }
+}
+@media (max-width: 999px){
+    /* stratPage */
+    .firstPage{
+        width: 100%;
+    }
+    .link_button_container {
+        width: 100%;
+    }
+    .link_button_1 {
+        width: 30vw;
+        height: 28vw;
+        margin: 2vw;
+    }
+    .link_button_2 {
+        width: 30vw;
+        height: 28vw;
+        margin: 2vw;
+    }
+    .link_button_3 {
+        width: 30vw;
+        height: 60vw;
+        margin-top: 2vw;
+    }
+    .link_button_4 {
+        width: 30vw;
+        height: 28vw;
+        margin: 2vw;
+    }
+    .link_button_5 {
+        width: 30vw;
+        height: 28vw;
+        margin: 2vw;
+    }
+    .link_text {
+        width: 31vw;
+        height: 9vw;
+    }
+    .link_text_1 {
+        top:2vw;
+        left: 6.5vw;
+    }
+    .link_text_2 {
+        top: 44vw;
+        left: -3vw;
+    }
+    .link_text_31 {
+        top: 2vw;
+    }
+    .link_text_32 {
+        top: 44vw;
+    }
+    .link_text_4 {
+        top: 2vw;
+        left: -5.5vw;
+    }
+    .link_text_5 {
+        top: 44vw;
+        left: 7vw;
+    }
+    /* fashion */
+    .fashion_range {
+        width: 100vw;
+    }
+    .fashion {
+        width: 70vw;
+    }
+    .fashion_name {
+        width: 30vw;
+    }
+    /* book */
+    .bookInfo {
+        width: 30%;
+        font-size: 2vw;
+        background-color: aqua;
+    }
+    .bookCover {
+        width: 100%;
+        height: 40vw;
+    }
+}

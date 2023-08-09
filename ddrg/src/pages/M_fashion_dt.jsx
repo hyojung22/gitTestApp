@@ -1,10 +1,11 @@
 import React from 'react'
 
-const M_news = () => {
+const M_fashion_dt = () => {
   return (
     <div>
+        
     </div>
   )
 }
 
-export default M_news
+export default M_fashion_dt
