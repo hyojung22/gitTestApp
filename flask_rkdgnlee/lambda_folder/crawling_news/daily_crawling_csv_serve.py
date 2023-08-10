@@ -121,6 +121,18 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 
 
 
+def remove_doublequotes(text):
+    return text.replace('\"', '').replace("\'", "").replace("'", "").replace('"', '').replace("<br/>","").replace("\t","").replace("\n","")
+
+# Remove quotes from each string and create a new list
+and_clean_list = [remove_doublequotes(s) for s in my_list]
+and_and_clean_list = [remove_doublequotes(s) for s in and_clean_list]
+
+
+
+
+
+
 #adapter
 #####################################################################################
 # data_list = ["ㅁㅁㄴㅇㄻㄴㅇㄻㄴㅇ리ㅏㅓ"]
@@ -181,43 +193,62 @@ my_list = get_top_articles(lda_model, tfidf_vectorizer, articles, num_recommenda
 # save_list_as_documents("article", my_list)
 
 
-from flask_sqlalchemy import SQLAlchemy
-from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
-import cx_Oracle
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
-from sqlalchemy import create_engine, Column, Integer, String, Boolean
-from sqlalchemy.ext.declarative import declarative_base
+
+
+
+# from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+# import cx_Oracle
+
+# connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+# cursor = connection.cursor()
+
+
+
+
 
 
 # Create an engine
-engine = create_engine(f'oracle+cx_oracle://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/xe')
+#engine = create_engine(f'oracle+cx_oracle://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/xe')
 
 # Create a session factory
-Session = sessionmaker(bind=engine)
-Base = declarative_base()
-
-class News(Base):
-    __tablename__ = 'news'
-    id = Column(Integer, primary_key=True)
-    content = Column(String(1500), nullable=False)
-    prediction = Column(Boolean)
+#cx_Oracle.init_oracle_client(lib_dir=r"C:\\Oracle\\instantclient_19_19")
 
 
-cx_Oracle.init_oracle_client(lib_dir=r"C:\\Oracle\\instantclient_19_19")
 
 
-def save_list_as_oracle(data_list):
-    with Session() as session:
-        for idx, article in enumerate(data_list):
-            predictions = pipe_model.predict([article])
-            predictions = predictions.tolist()  # Convert to a list
-            new_record = News(id=idx, content=article, prediction=predictions)
-            session.add(new_record)
+# from config import DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT
+# import cx_Oracle
+
+# connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+# cursor = connection.cursor()
+
+
+
+# def save_list_as_oracle(data_list):
+#     try:
+#         for idx, article in enumerate(data_list):
+            
+#             predictions = pipe_model.predict([article])
+#             prediction = predictions.tolist()  # Convert to a list
+#             insert_query = (
+#                 f"INSERT INTO news (id, content, prediction) "
+#                 f"VALUES (:id, :content, :prediction)"
+#             )
+            
+#             for pred in prediction:
+#                 cursor.execute(insert_query, id=idx, content=article, prediction=pred)
         
-        session.commit()
-        session.close()
+#         connection.commit()
+#     except cx_Oracle.Error as error:
+#         print("Error:", error)
+#     finally:
+#         cursor.close()
+#         connection.close()
 
-save_list_as_oracle(my_list)
+# save_list_as_oracle(and_and_clean_list)
+
+
+
+
 
