@@ -9,8 +9,7 @@ const Logo = ({location}) => {
   const menu3 = (location.pathname === '/main/news')
   const menu4 = (location.pathname === '/main/fashion')
   const menu5 = (location.pathname === '/main/cook')
-
-  console.log(menu1);
+  
   const backgroundStyle = {
     display: 'flex',
     alignItems: 'center',

@@ -1,7 +1,9 @@
 /* 
 169 : scale(2.0)으로 확대 시, 호버에서 벗어나질 않음
 */
-
+.app {
+    position: relative;
+}
 /* startPage */
 .mainRange {
     display: flex;

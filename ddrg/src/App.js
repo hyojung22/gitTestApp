@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Logo from './components/Logo';
+import LogoMenu from './components/LogoMenu';
 import StartPage from './pages/StartPage';
 import M_book from './pages/M_book'
 import M_cook from './pages/M_cook';
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className='app'>
       {logoView && <Logo location={location}/>}
+      {/* {logoView && <LogoMenu location={location} style={{position:'absolute'}}/>} */}
       <Routes>
         <Route path='/' element={<StartPage/>}/>
         <Route path='/main/festival' element={<M_festival/>}/>
