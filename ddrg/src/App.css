@@ -373,7 +373,7 @@
 }
 .homepage_icon {
     width: 20px;
-    height: ;
+    /* height: ; */
     margin-left: 30px;
     position: relative;;
     top: 5px;
@@ -611,4 +611,39 @@
     .cat_festival {
         max-width: 100px; /* 작은 화면에서 최대 너비를 100px로 제한 */
     }
+}
+
+
+/** M_news css 공간 */
+.news_mainText {
+    list-style-type: none;
+    padding-top: 100px;
+    padding-right: 130px;
+    padding-left: 130px;
+    font-family: 'NanumSquareNeo-Variable';
+    line-height: 50px;
+    font-size: 20px;
+    color: #3e448b;
+}
+
+.show-more-button {
+    display: block;
+    margin-top: 5px;
+    border: none;
+    background-color: white;
+    font-weight:bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+.show-more-button:hover {
+    background-color: whitesmoke;
+}
+
+.news-contents {
+    max-height: 2em ; /** 2em: 2줄이란 의미 */
+    overflow: hidden;
+}
+
+.news-box {
+    margin: 20px 0px;
+
 }

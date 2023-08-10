@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import fashionInfo from '../../etc/fashion.json'
+import fashionInfo from '../../etc/fashion.json' 
 import Explain from './Explain';
 
 const Item = ({kinds, explainValue}) => {
