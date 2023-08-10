@@ -27,7 +27,7 @@ cursor = connection.cursor()
 #       """
 #     CREATE TABLE positions (
 #         title VARCHAR2(255),
-#         contents CLOB,
+#         contents VARCHAR2(2000),
 #         period VARCHAR2(100),
 #         location VARCHAR2(255),
 #         lat NUMBER,
@@ -55,7 +55,7 @@ cursor = connection.cursor()
 
 # drop_table_sql = "DROP TABLE positions"
 
-# # 테이블 삭제 실행
+# # # 테이블 삭제 실행
 # try:
 #     cursor.execute(drop_table_sql)
 #     print("Table dropped successfully.")
@@ -79,10 +79,10 @@ cursor = connection.cursor()
 
 
 # JSON 파일 불러오기
-# with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\data.json", "r", encoding="utf-8") as json_file:
-#     json_data = json.load(json_file)
+with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\data.json", "r", encoding="utf-8") as json_file:
+    json_data = json.load(json_file)
 
-# # JSON 데이터 확인
+# JSON 데이터 확인
 # print(json_data)
 
 

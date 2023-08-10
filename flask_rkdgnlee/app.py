@@ -110,8 +110,9 @@ def news_list():
 @app.route('/positions_list')
 def positions_list():
     positions_data = get_positions_data()
-    return jsonify(positions_data)
 
+
+    return jsonify(positions_data)
 
 
 

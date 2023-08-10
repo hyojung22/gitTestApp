@@ -50,7 +50,7 @@
                     
                         const li = document.createElement("li");
                         li.setAttribute('id', i);
-                        const textNode = document.createTextNode(JSON.stringify(data[i]['lat']));
+                        const textNode = document.createTextNode(JSON.stringify(data[i]['contents']));
                         li.appendChild(textNode);
                         document.getElementById('fruits1').appendChild(li)
                     
@@ -59,8 +59,8 @@
 
         }
         // Call the fetchJSONData function when the page loads
-        window.onload = fetchJSONData;
-        window.onload = fetchJSONData_position
+        // window.onload = fetchJSONData;
+        window.onload = fetchJSONData_position;
     </script>
 </body>
 
