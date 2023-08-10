@@ -76,7 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+
 }
 .logo_button {
     background-color: transparent;
@@ -190,28 +190,198 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
 .bookInfo {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-
-    border: 1px solid black;
+    border-radius: 20px;
+    border: 1px solid #e6e8f5;
+    box-shadow: inset 2px 2px 6px #e6e8f5;
+    overflow: hidden;
+    margin: 17px;
+    background-color: white;
+    z-index: 20;
+    margin-top: 30px;
+    height: 380px;
+}
+/* 글자 스타일 */
+.book_content1 {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 22px;
+    color: #595959;
+    margin: 6px;
+    font-family: 'NanumSquareNeo-Variable';
+    text-align: center;
+    word-wrap: break-word;
+    position: relative;
+    top: 8px;
+}
+.book_content2 {
+    font-size: 12px;
+    color: gray;
+    margin: 5px;
+    font-family: 'NanumSquareNeo-Variable';
+    text-align: center;
+    word-wrap: break-word;
+    position: relative;
+    top: 7px;
+}
+.bookBar {
+    position: relative;
+    bottom: 90px;
+    width: 1100px;
+}
+.book_btn_box {
+    width: 800px;
+    position: relative;
+    height: auto;
+    top: 50px;
 }
 .book_btn_box>button {
-    width: 90px;
-    height: 60px;
-
-    font-size: 18px;
-
-    margin: 5px;
+    width: 230 px;
+    height: 50px;
     border: none;
-    border: 1px solid black;
-    border-radius: 10px;
-
     background-color: transparent;
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 15px;
+    color: #161616;
+    margin-left: 36.5px;
 }
+.book_btn_box>button:hover,
+.book_btn_box>button:focus,
+.book_btn_box>button:active {
+    /* background-color: #eaeaea; */
+    color: #3e448b;
+    font-weight: bolder;
+}
+.title_heading {
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px;
+}
+.shape_icon {
+    width: 6px;
+    height: 6px;
+    position: relative;
+    top: 60px;
+    /*right :  139.5px;  62.5px; -21.5px; -104.5px; -182.5px; -259.5px; -349.5px; */
+}
+
+.shape_icon1 {
+    position: relative;
+    top: 50px;
+    right: 293px;
+}
+
+/* M_festival */
+.festival_box {
+    width: 90%; /* 뷰포트 너비의 90%로 설정 */
+    max-width: 1000px;
+    margin: 7% auto; /* 수직 가운데 정렬 */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    bottom: 160px;
+    right: 0;
+    /* border: 1px solid black; */
+    transition: left 0.3s ease-in-out; /* 애니메이션 효과 추가 */
+}
+.rounded_map {
+    position: relative;
+    top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.festival_title_heading {
+    font-family: 'NanumSquareNeo-Variable';
+    font-size: 27px;
+    font-weight: 800;
+    position: relative;
+    text-align: right;
+}
+.line {
+    position: relative;
+    bottom: 10px;
+    width: 1000px;
+    border: 1px solid black;
+}
+.cat_festival  {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    position: relative;
+    top: 80px;
+    right: 8px;
+}
+.popup {
+    width: 300px;
+    height: 260px;
+    border: 10px solid #1c73d1;
+    border-radius: 15px;
+    position: absolute; /* 수정: absolute로 변경 */
+    top: 295px; /* 원하는 위치로 조정 */
+    left: 30px; /* 원하는 위치로 조정 */
+    transition: right 0.3s ease-in-out; /* right 속성에 대한 애니메이션 효과 추가 */
+    z-index: 50;
+    background-color:white;
+
+    font-family: 'NanumSquareNeo-Variable';
+}
+.popup_firstContent {
+    position: relative;
+    margin: 30px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #3e448b;
+    line-height: 25px;
+    text-align: left;
+    text-shadow: -2px -2px 2px white; /* 윤곽선 효과 추가 */
+}
+.popup_secondContent {
+    position: relative;
+    text-align: left;
+    font-weight: 700;
+    font-size: 20px;
+    color: #595959;
+    line-height: 45px;
+    left: 10px;
+    /* bottom: 30px; */
+}
+.popup_thirdContent {
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 25px;
+    /* color: #d0d0d0; */
+    top: -15px;
+}
+.popup_fourthContent{
+    position: relative;
+    bottom: 20px;
+    line-height: 33px;
+}
+.marker_icon {
+    width: 20px;
+    height: auto;
+    margin-left: 30px;
+    position: relative;;
+    top: 5px;
+    right: 25px;
+}
+.homepage_icon {
+    width: 20px;
+    height: ;
+    margin-left: 30px;
+    position: relative;;
+    top: 5px;
+    right: 25px;
+}
+
 @media (min-width:1000px){
     /* stratPage */
     .firstPage{
@@ -306,14 +476,16 @@
     }
     /* M_book */
     .bookCase {
-        width: 730px;
+        width: 800px;
     }
     .bookInfo {
-        width: 240px;
+        width: 230px;
     }
     .bookCover {
-        width: 240px;
+        width: 100%;
         height: 290px;
+        box-shadow: 0px 8px 6px -6px #e3e3e3;
+        /* border-radius: 20px; */  
     }
 }
 @media (max-width: 999px){
@@ -408,8 +580,9 @@
     /* book */
     .bookInfo {
         width: 30%;
+        height: 360px;
         font-size: 2vw;
-        background-color: aqua;
+        /* background-color: aqua; */
     }
     .bookCover {
         width: 100%;
@@ -419,5 +592,25 @@
 @media (max-width:720px){
     .logo_button{
         display: none;
+    }
+}
+
+
+@font-face {
+    /* 폰트 */
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (max-width: 800px){
+    /* M_festival */
+    .festival_box {
+        transform: translateX(-50%, 0); /* X 방향으로만 이동하도록 설정 */
+    }
+    
+    .cat_festival {
+        max-width: 100px; /* 작은 화면에서 최대 너비를 100px로 제한 */
     }
 }

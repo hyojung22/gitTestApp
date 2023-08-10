@@ -13,9 +13,9 @@
         // Function to fetch JSON data
         function fetchJSONData() {
             fetch('http://127.0.0.1:5021/news_list') // Replace 'your_json_data.json' with your JSON source URL or file path
-                .then(response => console.log(data)//response.json())
-                .then(data => displayJSONData(data)
-                .catch(error => console.error('Error fetching JSON data:', error));
+                .then(response => response.json())
+                .then(data => displayJSONData(data))
+                .catch(error => console.error('Error fetching JSON data:', error))
         }
 
         // Function to display JSON data on the webpage
@@ -27,7 +27,7 @@
                     if (data[i]['prediction'] == 1){
                         const li = document.createElement("li");
                         li.setAttribute('id', i);
-                        const textNode = document.createTextNode(JSON.stringify(data[i]['article']));
+                        const textNode = document.createTextNode(JSON.stringify(data[i]['content']));
                         li.appendChild(textNode);
                         document.getElementById('fruits').appendChild(li)
                     }

@@ -1,0 +1,93 @@
+import React, { useState, useEffect } from 'react';
+import { Map, MapMarker, CustomOverlayMap, MarkerClusterer } from 'react-kakao-maps-sdk';
+import data from './data.json';
+import './Kakao.css';
+
+const Kakao = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState(null);
+
+  const positions = data.positions || [];
+
+  const markers = positions.map((position, index) => ({
+    id: index,
+    position: {
+      lat: position.lat,
+      lng: position.lng,
+    },
+  }));
+
+  const handleMarkerClick = (marker) => {
+    setSelectedMarker(marker);
+    setIsOpen(true);
+  };
+
+  return (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Map
+        id={`map`}
+        center={{
+          lat: 37,
+          lng: 127.93731667031574,
+        }}
+        style={{
+          width: "1000px",
+          height: "580px",
+        }}
+        level={14}
+      >
+        <MarkerClusterer averageCenter={true} minLevel={10}>
+          {markers.map(marker => (
+            <MapMarker
+              key={marker.id}
+              position={marker.position}
+              onClick={() => handleMarkerClick(marker)}
+            />
+          ))}
+        </MarkerClusterer>
+
+        {isOpen && selectedMarker && (
+          <CustomOverlayMap position={selectedMarker.position}>
+            <div className="wrap">
+              <div className="info">
+                <div className="title">
+                  {positions[selectedMarker.id]?.title}
+                  <div
+                    className="close"
+                    onClick={() => setIsOpen(false)}
+                    title="닫기"
+                  ></div>
+                </div>
+                <div className="body">
+                  <div className="desc">
+                    <div className="content">
+                      {positions[selectedMarker.id]?.contents}
+                    </div>
+                    <div className="period content">
+                      {positions[selectedMarker.id]?.period}
+                    </div>
+                    <div className="location">
+                      {positions[selectedMarker.id]?.location}
+                    </div>
+                    <div>
+                      <a
+                        href={positions[selectedMarker.id]?.page_url}
+                        target="_blank"
+                        className="link"
+                        rel="noreferrer"
+                      >
+                        홈페이지
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CustomOverlayMap>
+        )}
+      </Map>
+    </div>
+  );
+}
+
+export default Kakao;
