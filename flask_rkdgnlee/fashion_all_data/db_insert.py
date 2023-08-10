@@ -79,11 +79,11 @@ cursor = connection.cursor()
 
 
 # JSON 파일 불러오기
-with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\data.json", "r", encoding="utf-8") as json_file:
-    json_data = json.load(json_file)
+# with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\data.json", "r", encoding="utf-8") as json_file:
+#     json_data = json.load(json_file)
 
-# JSON 데이터 확인
-# print(json_data)
+# # JSON 데이터 확인
+# # print(json_data)
 
 
 # try:
@@ -123,9 +123,10 @@ with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\
 #         CREATE TABLE BOOKS (
 #         ID NUMBER,
 #         제목 VARCHAR2(255),
+#         저자 VARCHAR2(50),
 #         가격 VARCHAR2(50),
-#         주소 VARCHAR2(3000),
-#         설명 VARCHAR2(4000)
+#         주소 VARCHAR2(1000),
+#         설명 VARCHAR2(3000)
 #     )
 # """         
         
@@ -149,19 +150,43 @@ with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\
 # with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\all.json", "r", encoding="utf-8") as json_file:
 #     json_data = json.load(json_file)
 
-# # JSON 데이터 확인
-# print(json_data)
+# JSON 데이터 확인
+# print(json_data["설명"]["0"])
 
 
-# insert_sql = "INSERT INTO BOOKS (제목, 가격, 주소, 설명) VALUES (:title, :price, :address, description)"
+# def truncate_text(text, max_length):
+#     if len(text) > max_length:
+#         truncated_text = text[:max_length]
+#         return truncated_text
+#     return text
+
+# # 최대 길이로 문자열 자르기
+# max_description_length = 1000
+
+# insert_sql = "INSERT INTO BOOKS (제목, 저자, 가격, 주소, 설명) VALUES (:title, :author, :price, :address, :description)"
 
 # with connection.cursor() as cursor:
 #     for idx in range(len(json_data["제목"])):
-#         cursor.execute(insert_sql, title=json_data["제목"][str(idx)], price=json_data["가격"][str(idx)], address=json_data["주소"][str(idx)], desciption=json_data["설명"][str(idx)])
+#         original_description = json_data["설명"][str(idx)]
+#         truncated_description = truncate_text(original_description, max_description_length)
+        
+#         cursor.execute(
+#             insert_sql,
+#             title=json_data["제목"][str(idx)],
+#             author=json_data["저자"][str(idx)],
+#             price=json_data["가격"][str(idx)],
+#             address=json_data["주소"][str(idx)],
+#             description=truncated_description  # 자른 설명 사용
+#         )
 #     connection.commit()
 
 # # 연결 종료
 # connection.close()
+
+
+
+
+
 
 
 
