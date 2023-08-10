@@ -16,8 +16,8 @@ cx_Oracle.init_oracle_client(lib_dir=r"C:\\Oracle\\instantclient_19_19")
 app = Flask(__name__)
 
 
-connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
-cursor = connection.cursor()
+#connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+#cursor = connection.cursor()
 
 
 
@@ -62,6 +62,9 @@ CORS(app, resources={r'*': {'orgins': 'http://localhost:5021'}}, supports_creden
 
 
 def get_news_data():
+    
+    connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+    cursor = connection.cursor()
     try:
         cursor.execute("SELECT id, content, prediction FROM news")
         news_contents = cursor.fetchall()
@@ -86,8 +89,8 @@ def news_list():
 
 # Converting the formatted text to JSON format
 
-    json_data = json.dumps(news_data)
-    return jsonify(json_data)
+    #json_data = json.dumps(news_data)
+    return jsonify(news_data)
 
 
 
