@@ -1,11 +1,20 @@
 import React, {useState, useRef, useEffect } from 'react';
 import Item from '../components/cloth/Item.jsx';
 import Explain from '../components/cloth/Explain.jsx';
+import imgParts1 from '../img/패션img/parts1.png'
+import imgParts2 from '../img/패션img/parts2.png'
+import imgParts3 from '../img/패션img/parts3.png'
+import imgParts4 from '../img/패션img/parts4.png'
+import imgDeco1 from '../img/패션img/img1.png'
+import imgDeco2 from '../img/패션img/img2.png'
+import imgDeco3 from '../img/패션img/img3.png'
+import imgDeco4 from '../img/패션img/shoe.png'
 
 const M_fashion = () => {
   const max_height = window.innerHeight-100
-
   const piece_height = max_height*0.25
+
+  // Drag 관련 코드
 
   const [choice,setChoice] = useState(0);
   const [drag,setDrag] = useState(0);
@@ -54,16 +63,28 @@ const M_fashion = () => {
     setLeft(leftArr)
   },[drag])
 
+  // explain
 
+  const [explain,setExplain] = useState(false);
+  const [explainInfo,setExplainInfo] = useState([])
+
+  const explainValue = (value) =>{
+    setExplain(true);
+    setExplainInfo(value);
+  }
+  const explainEnd = (boolean) =>{
+    setExplain(boolean);
+  }
 
   return (
     <div className='center'>
-      <Explain/>
       <div className='fashion_range' style={{
         height:max_height
         }}>
-        <div className='fashion_name'>
-          모자
+        <div className='fashion_name fashionN1' style={{
+          height:piece_height
+        }}>
+          <img src={imgParts1}/>
         </div>
         <div className='fashion' style={{
           height:piece_height
@@ -74,7 +95,7 @@ const M_fashion = () => {
           draggable 
           onDragStart={(e) => {handleDragStart(e, 0)}} 
           >
-            <Item kinds='모자'/>
+            <Item kinds='모자' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion' style={{
@@ -86,11 +107,19 @@ const M_fashion = () => {
           draggable 
           onDragStart={(e) => {handleDragStart(e, 1)}} 
           >
-            <Item kinds='상의'/>
+            <Item kinds='상의' explainValue={explainValue}/>
           </div>
         </div>
-        <div className='fashion_name'>상의</div>
-        <div className='fashion_name'>하의</div>
+        <div className='fashion_name fashionN2' style={{
+          height:piece_height
+        }}>
+          <img src={imgParts2}/>
+        </div>
+        <div className='fashion_name fashionN3' style={{
+          height:piece_height
+        }}>
+          <img src={imgParts3}/>
+        </div>
         <div className='fashion' style={{
           height:piece_height
         }}>
@@ -100,7 +129,7 @@ const M_fashion = () => {
           draggable 
           onDragStart={(e) => {handleDragStart(e, 2)}} 
           >
-            <Item kinds='하의'/>
+            <Item kinds='하의' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion' style={{
@@ -112,12 +141,20 @@ const M_fashion = () => {
           draggable 
           onDragStart={(e) => {handleDragStart(e, 3)}} 
           >
-            <Item kinds='신발'/>
+            <Item kinds='신발' explainValue={explainValue}/>
           </div>
         </div>
-        <div className='fashion_name'>신발</div>
+        <div className='fashion_name fashionN4' style={{
+          height:piece_height
+        }}>
+          <img src={imgParts4}/>
+        </div>
+        <img src={imgDeco1} className='fashion_deco1'/>
+        <img src={imgDeco2} className='fashion_deco2'/>
+        <img src={imgDeco3} className='fashion_deco3'/>
+        <img src={imgDeco4} className='fashion_deco4'/>
+        {explain && <Explain explainInfo={explainInfo} explainEnd={explainEnd}/>}
       </div>
-      <Explain/>
     </div>
   )
 }

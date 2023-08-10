@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import fashionInfo from '../../etc/fashion.json'
 import Explain from './Explain';
 
-const Item = ({kinds}) => {
+const Item = ({kinds, explainValue}) => {
 
-  const [explain,setExplain] = useState(false);
   const array = []
   for(let i=1;i<91;i++){
     array.push(i)
@@ -19,9 +18,17 @@ const Item = ({kinds}) => {
     '신발':180,
     '모자':360
   }
+
+  // 상위로 보내는 정보
   const handleDetail = (num) =>{
-    setExplain(true);
-    console.log(fashionInfo.가격[kindNum[kinds]+num]);
+    const info = [
+      fashionInfo.가격[kindNum[kinds]+num],
+      fashionInfo.브랜드[kindNum[kinds]+num],
+      fashionInfo.옷[kindNum[kinds]+num],
+      fashionInfo.주소[kindNum[kinds]+num],
+      `../../img/패션img/${kinds}/${kinds}${num}.jpg`
+    ]
+    explainValue(info)
   }
 
   return (
@@ -32,7 +39,6 @@ const Item = ({kinds}) => {
       {capArr.map((e, index)=>
         (<img draggable='false' key={e} src={e} className='fashion_item' onClick={()=>handleDetail(index+1)}/>)
       )}
-      <Explain/>
     </div>
   )
 }

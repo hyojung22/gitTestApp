@@ -14,13 +14,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    height: 100vh;
+    position: fixed;
+    overflow: hidden;
 
     background-color: #3e448b;
 }
 .coverImg {
-    height: 80vh;
+    max-width: 100vw;
+    max-height: 80vh;
     width:max-content;
 }
 .link_button_container {
@@ -35,6 +36,8 @@
     flex-direction: column;
     flex: 2;
     position: relative;
+
+    border: 3px solid blue;
 }
 .link_button_center {
     display: flex;
@@ -42,6 +45,8 @@
     flex-direction: column;
     flex: 1;
     position: relative;
+
+    border: 3px solid blue;
 }
 .link_button {
     transition: 0.7s;
@@ -69,6 +74,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 .logo_button {
     background-color: transparent;
@@ -91,19 +97,75 @@
 /* M_fashion */
 .fashion_range {
     display: flex;
+    position: relative;
     flex-wrap: wrap;
 }
 .fashion {
-    display: flex;
+    position: relative;
     overflow: hidden;
 }
 .fashion_drag {
     position: relative;
 }
 .fashion_name {
+    position: relative;
     display: flex;
-    justify-content: center;
+}
+.fashion_name>img {
+    position: relative;
+    max-height: 70%;
+}
+.fashionN1 {
+    justify-content: end;
+    align-items: start;
+}
+.fashionN1>img {
+    max-width:110%;
+}
+.fashionN2 {
+    justify-content: start;
     align-items: center;
+}
+.fashionN2>img {
+    max-width:110%;
+}
+.fashionN3 {
+    align-items: end;
+    justify-content: start;
+}
+.fashionN3>img {
+    bottom : -15%
+}
+.fashionN4 {
+    align-items: center;
+    justify-content: end;
+}
+.fashionN4>img {
+    max-width: 120%;
+}
+.fashion_deco1 {
+    height: 25%;
+    top: 42%;
+    right: 65%;
+    position: absolute;
+}
+.fashion_deco2 {
+    height: 23%;
+    top:15%;
+    right: 0;
+    position: absolute;
+}
+.fashion_deco3 {
+    height: 20%;
+    top: 12%;
+    left: 5%;
+    position: absolute;
+}
+.fashion_deco4 {
+    height: 12%;
+    top: 71%;
+    left: 73%;
+    position: absolute;
 }
 .fashion_item {
     height: 80%;
@@ -111,6 +173,15 @@
     border: 1px solid black;
     border-radius: 20%;
     box-sizing: border-box;
+}
+.fashion_ex_text {
+    color : white;
+    font-size: 3vh;
+    font:bold;
+}
+.fashion_ex_img {
+    height: 90%;
+    margin: 3%;
 }
 /* M_book */
 .bookCase {
@@ -152,42 +223,44 @@
         height: 280px;
         margin:20px;
     }
-    .link_button_1:hover>img {
-        top: 100px;
-        left: 20px;
-    }
     .link_button_2 {
         width: 300px;
         height: 280px;
         margin:20px;
-    }
-    .link_button_2:hover>img {
-        top: 420px;
-        left: 20px;
+
+        border: 1px solid black;
     }
     .link_button_3 {
         width: 300px;
         height: 600px;
         margin-top: 20px;
     }
-    .link_button_3:hover>img {
-        top: 270px;
-        transform: scale(2);
-        background-color: black;
-    }
     .link_button_4 {
         width: 300px;
         height: 280px;
         margin:20px;
     }
-    .link_button_4:hover>img {
-        top: 100px;
-        left: 20px;
-    }
     .link_button_5 {
         width: 300px;
         height: 280px;
         margin:20px;
+    }
+    .link_button_1:hover>img {
+        top: 100px;
+        left: 20px;
+    }
+    .link_button_2:hover>img {
+        top: 420px;
+        left: 20px;
+    }
+    .link_button_3:hover>img {
+        top: 270px;
+        transform: scale(2);
+        background-color: black;
+    }
+    .link_button_4:hover>img {
+        top: 100px;
+        left: 20px;
     }
     .link_button_5:hover>img {
         top: 420px;
@@ -228,7 +301,6 @@
     }
     .fashion_name {
         width: 300px;
-        font-size: 7vw;
     }
     /* M_book */
     .bookCase {
@@ -284,22 +356,42 @@
         left: 6.5vw;
     }
     .link_text_2 {
-        top: 44vw;
+        top: 53vw;
         left: -3vw;
     }
     .link_text_31 {
         top: 2vw;
     }
     .link_text_32 {
-        top: 44vw;
+        top: 53vw;
     }
     .link_text_4 {
         top: 2vw;
         left: -5.5vw;
     }
     .link_text_5 {
-        top: 44vw;
+        top: 53vw;
         left: 7vw;
+    }
+    .link_button_1:hover>img {
+        top: 10vw;
+        left: 2vw;
+    }
+    .link_button_2:hover>img {
+        top: 42vw;
+        left: 2vw;
+    }
+    .link_button_3:hover>img {
+        top: 27vw;
+        transform: scale(2);
+    }
+    .link_button_4:hover>img {
+        top: 10vw;
+        left: 2vw;
+    }
+    .link_button_5:hover>img {
+        top: 42vw;
+        left: 2vw;
     }
     /* fashion */
     .fashion_range {
@@ -320,5 +412,10 @@
     .bookCover {
         width: 100%;
         height: 40vw;
+    }
+}
+@media (max-width:720px){
+    .logo_button{
+        display: none;
     }
 }
