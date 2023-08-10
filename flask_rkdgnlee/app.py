@@ -86,10 +86,6 @@ def hello_world():
 @app.route('/news_list')
 def news_list():
     news_data = get_news_data()
-
-# Converting the formatted text to JSON format
-
-    #json_data = json.dumps(news_data)
     return jsonify(news_data)
 
 
