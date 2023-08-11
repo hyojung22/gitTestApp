@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import logo from '../img/Logo.png';
 import mainCover from '../img/메인img/mainCover.png'
 import img1 from '../img/메인img/1cook.png';
 import img2 from '../img/메인img/2fashion.png';
@@ -23,6 +22,11 @@ import text5 from '../img/메인img/5festival_text.png';
     본인이 원하는 조건일때 상위 fixed로 class 변경 
 */
 
+/*
+    logo menu button 만들기
+    link button 뒤집기
+*/
+
 const StartPage = () => {
 
     const [currentHeight, setCurrentHeight] = useState(document.documentElement.clientHeight)
@@ -37,7 +41,6 @@ const StartPage = () => {
         var windowY = ~~(document.documentElement.clientHeight);
         var scrollY = ~~(document.documentElement.scrollTop);
         setCurrentHeight(windowY*(1-scrollY/windowY));
-        console.log(currentHeight);
     }
     const pageHeight = {
         height:currentHeight
@@ -47,11 +50,6 @@ const StartPage = () => {
     <div className='mainRange'>
         <div className='firstPage' style={pageHeight}>
             <img className='coverImg'src={mainCover}/>
-
-            {/* {document.documentElement.scrollTop > 150 
-            ? <img src={logo} style={logoStyle} className="fixed"/>
-            : <img src={logo} style={logoStyle} className="original"/>
-            } */}
         </div>
         <div className='link_button_container'>
             <div className='link_button_side'>
@@ -74,7 +72,7 @@ const StartPage = () => {
                 </Link>
             </div>
             <div className='link_button_center'>
-                <Link to={'/main/festival'} className='link_button_3 link_button'>
+                <Link to={'/main/news'} className='link_button_3 link_button'>
                     <img className='link_text_31 link_text' src={text3}/>
                     <img className='link_text_32 link_text' src={text3}/>
                 </Link>
@@ -83,7 +81,7 @@ const StartPage = () => {
                 <Link to={'/main/book'} className='link_button_4 link_button'>
                     <img className='link_text_4 link_text' src={text4}/>
                 </Link>
-                <Link to={'/main/news'} className='link_button_5 link_button'>
+                <Link to={'/main/festival'} className='link_button_5 link_button'>
                     <img className='link_text_5 link_text' src={text5}/>
                 </Link>
             </div>

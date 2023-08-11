@@ -24,7 +24,11 @@ const M_news = () => {
     setData(newData);
   }
 
-
+ /** 랜덤으로 3~5개 가져오기 굉장히 짧게. 가볍게 볼 수 있게, 
+  *  제목은 
+  *  커뮤니티는 팝업창처럼 
+  * 
+  */
   return (
     <div>
       <ul className='news_mainText'>
@@ -32,11 +36,11 @@ const M_news = () => {
           item.prediction === 1 ? (
           <li key={item.id} className='news_box'>
             <div className='news-content'>
-              {item.expanded ? item.content : item.content.slice(0, 100)}
+              {item.expanded ? item.content : item.content.slice(0, 50)}
               {!item.expanded && item.content.length > 100 && <span>...</span>}
             </div>
             <div className='more-box'>
-            {!item.expanded && item.content.length > 100 && (
+            {!item.expanded && item.content.length > 50 && (
               <button className='show-more-button' onClick={() => toggleExpand(index)}>
                 더 보기
               </button>  

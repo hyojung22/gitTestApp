@@ -10,33 +10,20 @@ const Logo = ({location}) => {
   const menu4 = (location.pathname === '/main/fashion')
   const menu5 = (location.pathname === '/main/cook')
 
-  console.log(menu1);
-  const backgroundStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'end',
-    position: 'relative',
-
-    width: '100vw',
-    height:'80px',
-    backgroundColor:'#3e448b'
-  }
-
   const logoStyle = {
     position:'relative',
     width:'140px', 
     height:'50px',
-    right: '20px'
   }
 
   return (
-    <div className='center' style={{position:'relative', justifyContent:'center'}}>
-      <div style={backgroundStyle}>
+    <div className='header'>
+      <div style={{left:'5px'}}>
         <Link to={'/'}>
           <img src={img} style={logoStyle}/>
         </Link>
       </div>
-      <div style={{position: 'absolute'}}>
+      <div className=''>
         <Link to={'/main/festival'}>
           <button className='logo_button' style={menu1?{backgroundColor:'white',color:'#3e448b'}:null}>축제</button>
         </Link>

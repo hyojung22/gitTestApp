@@ -9,7 +9,9 @@ import M_fashion from './pages/M_fashion';
 import M_news from './pages/M_news';
 import M_festival from './pages/M_festival.jsx';
 import NotFound from './pages/NotFound';
-
+// 도서 파트 json은 ../pages/M_book.jsx 에서 import
+// 패션 파트 json은 ../components/cloth/Item.jsx 에서 import
+// 축제 파트 json은 ../components/Kakao.js 에서 import
 
 function App() {
 
@@ -19,6 +21,7 @@ function App() {
   return (
     <div className='app'>
       {logoView && <Logo location={location}/>}
+      {/* {logoView && <LogoMenu location={location} style={{position:'absolute'}}/>} */}
       <Routes>
         <Route path='/' element={<StartPage/>}/>
         <Route path='/main/festival' element={<M_festival/>}/>

@@ -1,6 +1,9 @@
+
 import React, { useState } from 'react'
 import fashionInfo from '../../etc/fashion.json' 
-import Explain from './Explain';
+
+
+
 
 const Item = ({kinds, explainValue}) => {
 
@@ -25,8 +28,8 @@ const Item = ({kinds, explainValue}) => {
       fashionInfo.가격[kindNum[kinds]+num],
       fashionInfo.브랜드[kindNum[kinds]+num],
       fashionInfo.옷[kindNum[kinds]+num],
-      fashionInfo.주소[kindNum[kinds]+num],
-      `../../img/패션img/${kinds}/${kinds}${num}.jpg`
+      fashionInfo.주소[kindNum[kinds]+(num-1)],
+      require(`../../img/패션img/${kinds}/${kinds}${num}.jpg`)
     ]
     explainValue(info)
   }
