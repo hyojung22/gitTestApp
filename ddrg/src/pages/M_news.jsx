@@ -31,29 +31,31 @@ const M_news = () => {
   */
   return (
     <div>
-      <ul className='news_mainText'>
-        {data.map((item, index) => (
-          item.prediction === 1 ? (
-          <li key={item.id} className='news_box'>
-            <div className='news-content'>
-              {item.expanded ? item.content : item.content.slice(0, 50)}
-              {!item.expanded && item.content.length > 100 && <span>...</span>}
-            </div>
-            <div className='more-box'>
-            {!item.expanded && item.content.length > 50 && (
-              <button className='show-more-button' onClick={() => toggleExpand(index)}>
-                더 보기
-              </button>  
+      <div className='news_container'>
+        <ul className='news_mainText'>
+          {data.map((item, index) => (
+            item.prediction === 1 ? (
+            <li key={item.id} className='news_box'>
+              <div className='news-content'>
+                {item.expanded ? item.content : item.content.slice(0, (item.content.indexOf('.')+3fg))}
+                {!item.expanded && item.content.length > 100 && <span>...</span>}
+              </div>
+              <div className='more-box'>
+              {!item.expanded && item.content.length > 50 && (
+                <button className='show-more-button' onClick={() => toggleExpand(index)}>
+                  더 보기
+                </button>  
+                )}
+              {item.expanded && (
+                <button className='show-more-button' onClick={() => toggleExpand(index)}>
+                  줄이기
+                </button>
               )}
-            {item.expanded && (
-              <button className='show-more-button' onClick={() => toggleExpand(index)}>
-                줄이기
-              </button>
-            )}
-            </div>
-          </li>)  
-          : null ))}
-      </ul>
+              </div>
+            </li>)  
+            : null ))}
+        </ul>
+      </div>
     </div>
   );
 };
