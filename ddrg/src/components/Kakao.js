@@ -1,13 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Map, MapMarker, CustomOverlayMap, MarkerClusterer } from 'react-kakao-maps-sdk';
 import data from './data.json';
+import axios from 'axios'
+
 import './Kakao.css';
 
 const Kakao = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState(null);
 
-  const positions = data.positions || [];
+  // const positions = data.positions || [];
+
+  const [positions, setPositions] = useState([]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get("http://127.0.0.1:5021/positions_list");
+        setPositions(result.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // 오류 처리: 사용자에게 오류 메시지를 보여줄 수 있음
+      }
+    };
+    
+    fetchData();
+  }, []);
+
+
+
 
   const markers = positions.map((position, index) => ({
     id: index,
@@ -61,7 +82,7 @@ const Kakao = () => {
                 <div className="body">
                   <div className="desc">
                     <div className="content">
-                      {positions[selectedMarker.id]?.contents}
+                      {/* {positions[selectedMarker.id]?.contents} # 이걸 데이터 베이스에서 고쳐야됨*/}
                     </div>
                     <div className="period content">
                       {positions[selectedMarker.id]?.period}
