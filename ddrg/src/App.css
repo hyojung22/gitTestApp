@@ -624,6 +624,7 @@
     line-height: 50px;
     font-size: 20px;
     color: #3e448b;
+    
 }
 
 .show-more-button {
@@ -633,17 +634,22 @@
     background-color: white;
     font-weight:bold;
     transition: background-color 0.3s, color 0.3s;
+    font-size: 15px;
+    font-family: 'NanumSquareNeo-Variable';   
+    color: #3e448b5b;     
+
 }
 .show-more-button:hover {
     background-color: whitesmoke;
 }
 
 .news-contents {
-    max-height: 2em ; /** 2em: 2줄이란 의미 */
+    max-height: 2em ; /** 2em: 2줄 */
     overflow: hidden;
 }
 
-.news-box {
-    margin: 20px 0px;
-
+.more-box {
+    display:flex;
+    justify-content: center;
+    margin-bottom: 35px;
 }
