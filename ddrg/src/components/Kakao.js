@@ -82,7 +82,7 @@ const Kakao = () => {
                 <div className="body">
                   <div className="desc">
                     <div className="content">
-                      {/* {positions[selectedMarker.id]?.contents} # 이걸 데이터 베이스에서 고쳐야됨*/}
+                      {positions[selectedMarker.id]?.contents} 
                     </div>
                     <div className="period content">
                       {positions[selectedMarker.id]?.period}
