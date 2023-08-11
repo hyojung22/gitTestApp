@@ -60,11 +60,9 @@ for lii in keyword_li:
     keyword_list.append(senten)
 print(keyword_list)
 
+
+
 keyword_df = pd.DataFrame(keyword_list, columns= [datetime.today().strftime("%Y%m%d")])
-
-
-
-
 
 if not os.path.exists("keyword.csv"):
     keyword_df.to_csv("keyword.csv", index=False, encoding='utf-8-sig')

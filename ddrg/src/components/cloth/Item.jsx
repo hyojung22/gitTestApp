@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import fashionInfo from '../../etc/fashion.json'
 
+
 const Item = ({kinds, explainValue}) => {
 
   const [data1, setData1] = useState([]);
