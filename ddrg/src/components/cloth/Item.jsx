@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import fashionInfo from '../../etc/fashion.json'
 
 const Item = ({kinds, explainValue}) => {
+
+  const [data1, setData1] = useState([]);
+  
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get("http://127.0.0.1:5021/fashion_list");
+        setData1(result.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // 오류 처리: 사용자에게 오류 메시지를 보여줄 수 있음
+      }
+    };
+    
+    fetchData();
+  }, []);
+
+
 
   const array = []
   for(let i=1;i<91;i++){
