@@ -23,7 +23,7 @@ const Logo = ({location}) => {
           <img src={img} style={logoStyle}/>
         </Link>
       </div>
-      <div style={{right:'5px'}}>
+      <div className=''>
         <Link to={'/main/festival'}>
           <button className='logo_button' style={menu1?{backgroundColor:'white',color:'#3e448b'}:null}>축제</button>
         </Link>

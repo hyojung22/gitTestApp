@@ -79,6 +79,42 @@ def get_news_data():
         cursor.close()
         connection.close()
 
+def get_positions_data():
+    connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+    cursor = connection.cursor()
+    try:
+        cursor.execute("SELECT contents, period, location, lat, lng, page_url FROM positions")
+        positions_contents = cursor.fetchall()
+        positions_data = [
+            {'contents': contents, 'period': period, 'location': location, 'lat': lat, 'lng':lng, 'page_url':page_url}
+            for contents, period, location, lat, lng, page_url in positions_contents
+        ]
+        return positions_data
+    except cx_Oracle.Error as error:
+        print("Error:", error)
+    finally:
+        cursor.close()
+        connection.close()
+
+
+def get_books_data():
+    connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+    cursor = connection.cursor()
+    try:
+        cursor.execute("SELECT 제목,저자,가격,주소,설명 FROM BOOKS")
+        books_contents = cursor.fetchall()
+        books_data = [
+            {'제목': title, '저자': author, '가격': price, '주소': address, '설명': description}
+            for title, author, price, address, description in books_contents
+        ]
+        return books_data
+    except cx_Oracle.Error as error:
+        print("Error:", error)
+    finally:
+        cursor.close()
+        connection.close()
+
+
 @app.route("/")
 def hello_world():
     return render_template('index.html')
@@ -89,31 +125,16 @@ def news_list():
     return jsonify(news_data)
 
 
+@app.route('/positions_list')
+def positions_list():
+    positions_data = get_positions_data()
+    return jsonify(positions_data)
 
+@app.route('/books_list')
+def books_list():
+    books_data = get_books_data()
+    return jsonify(books_data)
 
-
-
-# def get_festival_data():
-#     return festival_data
-
-# def get_bestseller_data():
-#     return bestseller_data
-################################################################
-
-
-
-
-
-
-# @app.route('/bestseller')
-# def bestseller():
-
-#     return jsonify(festival_data)
-
-# @app.route('/festival')
-# def festival():
-
-#     return jsonify(bestseller_data)
 
 
 if __name__ == '__main__':

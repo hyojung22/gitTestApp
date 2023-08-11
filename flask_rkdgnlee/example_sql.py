@@ -94,27 +94,28 @@ cursor = connection.cursor()
 
 
 
-# def create_news_table():
-#     try:
-#         create_query = (
-#             "CREATE TABLE news ("
-#             "id NUMBER PRIMARY KEY,"
-#             "content VARCHAR2(1500 CHAR),"
-#             "prediction NUMBER"
-#             ")"
-#         )
+def create_news_table():
+    try:
+        create_query = (
+            
+            "CREATE TABLE news ("
+            "id NUMBER PRIMARY KEY,"
+            "content VARCHAR2(1500 CHAR),"
+            "prediction NUMBER"
+            ")"
+        )
         
-#         cursor.execute(create_query)
-#         print("Table news created successfully.")
+        cursor.execute(create_query)
+        print("Table news created successfully.")
         
-#         connection.commit()
-#     except cx_Oracle.Error as error:
-#         print("Error:", error)
-#     finally:
-#         cursor.close()
-#         connection.close()
+        connection.commit()
+    except cx_Oracle.Error as error:
+        print("Error:", error)
+    finally:
+        cursor.close()
+        connection.close()
 
-# create_news_table()
+create_news_table()
 
 
 
