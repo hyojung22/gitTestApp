@@ -2,7 +2,6 @@ import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Logo from './components/Logo';
-import LogoMenu from './components/LogoMenu';
 import StartPage from './pages/StartPage';
 import M_book from './pages/M_book'
 import M_cook from './pages/M_cook';
@@ -10,7 +9,9 @@ import M_fashion from './pages/M_fashion';
 import M_news from './pages/M_news';
 import M_festival from './pages/M_festival.jsx';
 import NotFound from './pages/NotFound';
-
+// 도서 파트 json은 ../pages/M_book.jsx 에서 import
+// 패션 파트 json은 ../components/cloth/Item.jsx 에서 import
+// 축제 파트 json은 ../components/Kakao.js 에서 import
 
 function App() {
 

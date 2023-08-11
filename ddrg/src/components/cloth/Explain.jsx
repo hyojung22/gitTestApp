@@ -12,11 +12,25 @@ const Explain = ({explainInfo, explainEnd}) => {
     width : '100%',
     height : '100%'
   }
+  const cover = {
+    position : 'absolute',
+    width : '100%',
+    height : '100%',
+    opacity : '0.4',
+    backgroundColor : 'gray'
+  }
+  const backBlur = {
+    position : 'absolute',
+    width : '100%',
+    height : '100%',
+    backdropFilter: 'blur(10px)'
+  }
   const back = {
+    position : 'absolute',
+    borderRadius: '20px',
     width : '80%',
     height : '30%',
-    opacity : '0.7',
-    backgroundColor : '#3e448b'
+    backgroundColor : 'white'
   }
   const groub = {
     display : 'flex',
@@ -25,9 +39,7 @@ const Explain = ({explainInfo, explainEnd}) => {
     height : '30%',
     position : 'absolute'
   }
-  console.log(explainInfo[4]);
-  // const img = require(`${explainInfo[4]}`)
-  const img = require('../../img/패션img/모자/모자1.jpg')
+  const img = explainInfo[4]
 
   const handleEnd = () =>{
     explainEnd(false)
@@ -42,13 +54,15 @@ const Explain = ({explainInfo, explainEnd}) => {
   }
   return (
     <div style={style}>
+      <div style={cover}/>
+      <div style={backBlur}/>
       <div style={back}/>
       <div style={groub}>
         <img className='fashion_ex_img' src={img}/>
         <div className='fashion_ex_text'>
-          <div className='fashion_ex'>이름 : {explainInfo[2]}</div>
-          <div className='fashion_ex'>브랜드 : {explainInfo[1]}</div>
-          <div className='fashion_ex'>가격 : {explainInfo[0]}</div>
+          <div className='fashion_ex a'>이름 : {explainInfo[2]}</div>
+          <div className='fashion_ex b'>브랜드 : {explainInfo[1]}</div>
+          <div className='fashion_ex c'>가격 : {explainInfo[0]}</div>
           <div className='fashion_ex'><a href={explainInfo[3]} style={{textDecoration: 'none'}}>바로가기</a></div>
         </div>
       </div>

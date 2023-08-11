@@ -1,8 +1,9 @@
 /* 
 169 : scale(2.0)으로 확대 시, 호버에서 벗어나질 않음
 */
-.app {
+* {
     position: relative;
+    font-family: 'NanumSquareNeo-Variable';
 }
 /* startPage */
 .mainRange {
@@ -76,7 +77,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
+/* logo */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height:80px;
+    background-color:#3e448b;
 }
 .logo_button {
     background-color: transparent;
@@ -87,15 +97,17 @@
     color: white;
     border-left: 2px solid #9F81F7;
 }
-.cook {
-    border-right: 2px solid #9F81F7;
-}
 .logo_button:hover {
     border-right: 2px solid #9F81F7;
     transform: scale(1.3);
     transition: 0.5s;
     background-color: #3e448b;
 }
+
+.cook {
+    border-right: 2px solid #9F81F7;
+}
+
 /* M_fashion */
 .fashion_range {
     display: flex;
@@ -176,131 +188,105 @@
     border-radius: 20%;
     box-sizing: border-box;
 }
-.fashion_ex_text {
-    color : white;
+.fashion_ex.a {
+    font-size: 4vh;
+    font-weight:bold;
+    line-height: 6vh;
+}
+.fashion_ex.b {
+    font-size: 3.5vh;
+    font-weight:bold;
+    line-height: 5vh;
+    color : gray;
+}
+.fashion_ex.c {
     font-size: 3vh;
-    font:bold;
+    font-weight:bold;
+    line-height: 4vh;
+    color : gray;
 }
 .fashion_ex_img {
     height: 90%;
     margin: 3%;
 }
+
 /* M_book */
+.book_btn_box {
+    position: relative;
+    display: flex;
+    align-items: end;
+    margin-top: 50px;
+}
+
+.book_select {
+    position: absolute;
+    top:35px;
+    width: 6px;
+    height: 6px;
+}
+
+.book_iconBox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.book_icon {
+    width: 71px;
+    height: 42px;
+    position: relative;
+    left: 5px;
+}
+.book_title {
+    width: 200px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700px;
+}
+
+.book_btn_box>button {
+    width: 80px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    color: #161616;
+
+}
+
 .bookCase {
+    position: relative;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .bookInfo {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    border-radius: 20px;
-    border: 1px solid #e6e8f5;
-    box-shadow: inset 2px 2px 6px #e6e8f5;
-    overflow: hidden;
-    margin: 17px;
-    background-color: white;
-    z-index: 20;
-    margin-top: 30px;
-    height: 380px;
+    margin: 0px 20px 60px 20px;
+    z-index: 1;
 }
-/* 글자 스타일 */
-.book_content1 {
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 22px;
-    color: #595959;
-    margin: 6px;
-    font-family: 'NanumSquareNeo-Variable';
-    text-align: center;
-    word-wrap: break-word;
-    position: relative;
-    top: 8px;
+.bookCover {
+    box-shadow: 7px -2px 6px 5px gray;
 }
-.book_content2 {
-    font-size: 12px;
-    color: gray;
-    margin: 5px;
-    font-family: 'NanumSquareNeo-Variable';
-    text-align: center;
-    word-wrap: break-word;
-    position: relative;
-    top: 7px;
-}
-.bookBar {
-    position: relative;
-    bottom: 90px;
-    width: 1100px;
-}
-.book_btn_box {
-    width: 800px;
-    position: relative;
-    height: auto;
-    top: 50px;
-}
-.book_btn_box>button {
-    width: 230 px;
-    height: 50px;
-    border: none;
-    background-color: transparent;
-    font-family: 'NanumSquareNeo-Variable';
-    font-size: 15px;
-    color: #161616;
-    margin-left: 36.5px;
-}
-.book_btn_box>button:hover,
-.book_btn_box>button:focus,
-.book_btn_box>button:active {
-    /* background-color: #eaeaea; */
-    color: #3e448b;
-    font-weight: bolder;
-}
-.title_heading {
-    font-family: 'NanumSquareNeo-Variable';
-    font-size: 30px;
-    font-weight: 700;
-    margin: 20px;
-}
-.shape_icon {
-    width: 6px;
-    height: 6px;
-    position: relative;
-    top: 60px;
-    /*right :  139.5px;  62.5px; -21.5px; -104.5px; -182.5px; -259.5px; -349.5px; */
-}
-
-.shape_icon1 {
-    position: relative;
-    top: 50px;
-    right: 293px;
+.book_textBox {
+    width: 100%;
 }
 
 /* M_festival */
 .festival_box {
     width: 90%; /* 뷰포트 너비의 90%로 설정 */
     max-width: 1000px;
-    margin: 7% auto; /* 수직 가운데 정렬 */
-    border-radius: 20px;
-    overflow: hidden;
     position: relative;
-    bottom: 160px;
-    right: 0;
-    /* border: 1px solid black; */
-    transition: left 0.3s ease-in-out; /* 애니메이션 효과 추가 */
+    transition: all 1s ease-in-out; /* 애니메이션 효과 추가 */
 }
-.rounded_map {
-    position: relative;
-    top: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-}
+
 .festival_title_heading {
-    font-family: 'NanumSquareNeo-Variable';
     font-size: 27px;
     font-weight: 800;
+    margin-top: 10%;
     position: relative;
     text-align: right;
 }
@@ -310,13 +296,18 @@
     width: 1000px;
     border: 1px solid black;
 }
-.cat_festival  {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
+.rounded_map {
     position: relative;
-    top: 80px;
-    right: 8px;
+    top: 20px;
+    border-radius: 20px;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 7%;
+}
+.cat_festival  {
+    width: 150px;
+    position: absolute;
+    z-index: 2;
 }
 .popup {
     width: 300px;
@@ -324,13 +315,11 @@
     border: 10px solid #1c73d1;
     border-radius: 15px;
     position: absolute; /* 수정: absolute로 변경 */
-    top: 295px; /* 원하는 위치로 조정 */
-    left: 30px; /* 원하는 위치로 조정 */
+    top: 40vh; /* 원하는 위치로 조정 */
+    left: 10%; /* 원하는 위치로 조정 */
     transition: right 0.3s ease-in-out; /* right 속성에 대한 애니메이션 효과 추가 */
     z-index: 50;
     background-color:white;
-
-    font-family: 'NanumSquareNeo-Variable';
 }
 .popup_firstContent {
     position: relative;
@@ -375,7 +364,6 @@
 }
 .homepage_icon {
     width: 20px;
-    height: ;
     margin-left: 30px;
     position: relative;;
     top: 5px;
@@ -479,13 +467,32 @@
         width: 800px;
     }
     .bookInfo {
-        width: 230px;
+        width: 200px;
     }
     .bookCover {
         width: 100%;
         height: 290px;
-        box-shadow: 0px 8px 6px -6px #e3e3e3;
-        /* border-radius: 20px; */  
+    }
+    .book_cover_blink {
+        height: 80px;
+    }
+    .book_content1 {
+        font-size: 20px;
+    }
+    .book_content2 {
+        font-size: 15px;
+        
+    }
+    .bookBar {
+        position: absolute;
+        top: 220px;
+        width: 1100px;
+    }
+}
+@media (max-width: 1110px){
+    /* festival */
+    .line {
+        width: 90vw;
     }
 }
 @media (max-width: 999px){
@@ -579,19 +586,39 @@
     }
     /* book */
     .bookInfo {
-        width: 30%;
-        height: 360px;
+        width: 20vw;
         font-size: 2vw;
-        /* background-color: aqua; */
     }
     .bookCover {
         width: 100%;
-        height: 40vw;
+        height: 29vw;
+    }
+    .book_cover_blink {
+        height: 8vw;
+    }
+    .book_content1 {
+        font-size: 2vw;
+    }
+    .book_content2 {
+        font-size: 1.5vw;
+        
+    }
+    .bookBar {
+        position: absolute;
+        top: 22vw;
+        width: 110vw;
+    }
+    /* festival */
+    .line {
+        width: 90vw;
+    }
+    .cat_festival {
+        width: 150px;
     }
 }
-@media (max-width:720px){
-    .logo_button{
-        display: none;
+@media (max-width:800px){
+    .cat_festival{
+        width: 18.75vw;
     }
 }
 
@@ -610,7 +637,5 @@
         transform: translateX(-50%, 0); /* X 방향으로만 이동하도록 설정 */
     }
     
-    .cat_festival {
-        max-width: 100px; /* 작은 화면에서 최대 너비를 100px로 제한 */
-    }
+    
 }
