@@ -204,3 +204,75 @@ cursor = connection.cursor()
 # finally:
 #     cursor.close()
 #     connection.close()
+
+
+
+
+
+
+#fashion 
+
+
+
+# def create_news_table():
+#     try:
+#         create_table_sql = """
+#         CREATE TABLE fashion (
+#             브랜드 VARCHAR2(100),
+#             옷 VARCHAR2(200),
+#             가격 VARCHAR2(150),
+#             주소 VARCHAR2(500)
+#         )
+#         """
+        
+        
+#         cursor.execute(create_table_sql)
+#         print("Table news created successfully.")
+        
+#         connection.commit()
+#     except cx_Oracle.Error as error:
+#         print("Error:", error)
+#     finally:
+#         cursor.close()
+#         connection.close()
+
+# create_news_table()
+
+
+# # 테이블 삭제
+# drop_table_sql = "DROP TABLE fashion"
+
+# try:
+#     cursor.execute(drop_table_sql)
+#     print("Table dropped successfully.")
+#     connection.commit()
+# except cx_Oracle.Error as error:
+#     print("Error:", error)
+# finally:
+#     cursor.close()
+#     connection.close()
+
+
+
+# with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\fashion.json", "r", encoding="utf-8") as json_file:
+#     json_data = json.load(json_file)
+
+# # JSON 데이터 확인
+# print(json_data["가격"]["0"])
+
+# insert_sql = "INSERT INTO fashion (브랜드, 옷, 가격, 주소) VALUES (:brand, :cloth, :price, :address)"
+
+
+# with connection.cursor() as cursor:
+#     for idx in range(len(json_data["브랜드"])):
+#         cursor.execute(
+#             insert_sql,
+#             brand=json_data["브랜드"][str(idx)],
+#             cloth=json_data["옷"][str(idx)],
+#             price=json_data["가격"][str(idx)],
+#             address=json_data["주소"][str(idx)]
+#             )
+#         connection.commit()
+
+# # 연결 종료
+# connection.close()

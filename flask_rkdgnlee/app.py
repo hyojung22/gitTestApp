@@ -140,6 +140,25 @@ def get_books_data():
         connection.close()
 
 
+
+def get_fashion_data():
+    connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+    cursor = connection.cursor()
+    try:
+        cursor.execute("SELECT 브랜드,옷,가격,주소 FROM fashion")
+        fashion_contents = cursor.fetchall()
+        fashion_data = [
+            {'브랜드': brand, '옷': cloth, '가격': price, '주소': address}
+            for brand, cloth, price, address in fashion_contents
+        ]
+        return fashion_data
+    except cx_Oracle.Error as error:
+        print("Error:", error)
+    finally:
+        cursor.close()
+        connection.close()
+
+
 @app.route("/")
 def hello_world():
     return render_template('index.html')
@@ -154,8 +173,6 @@ def keywords_list():
     keyword_data = get_keyword_data()
     return jsonify(keyword_data)
 
-
-
 @app.route('/positions_list')
 def positions_list():
     positions_data = get_positions_data()
@@ -166,6 +183,10 @@ def books_list():
     books_data = get_books_data()
     return jsonify(books_data)
 
+@app.route('/fashion_list')
+def fashion_list():
+    fashion_data = get_fashion_data()
+    return jsonify(fashion_data)
 
 
 if __name__ == '__main__':
