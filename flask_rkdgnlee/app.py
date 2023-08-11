@@ -57,6 +57,26 @@ CORS(app, resources={r'*': {'orgins': 'http://localhost:5021'}}, supports_creden
 #     return news_data
 
 
+def get_keyword_data():
+    
+    connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
+    cursor = connection.cursor()
+    try:
+   
+        cursor.execute("select keyword from keyword_table")
+        keyword_contents = cursor.fetchall()
+        keyword_data = [
+            {'keyword' : keyword}
+            for keyword in keyword_contents
+        ]
+        return keyword_data
+    except cx_Oracle.Error as error:
+        print("Error:", error)
+    finally:
+        cursor.close()
+        connection.close()
+
+
 
 
 
@@ -97,6 +117,11 @@ def get_positions_data():
         connection.close()
 
 
+
+
+
+
+
 def get_books_data():
     connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
     cursor = connection.cursor()
@@ -123,6 +148,12 @@ def hello_world():
 def news_list():
     news_data = get_news_data()
     return jsonify(news_data)
+
+@app.route('/keyword_list')
+def keywords_list():
+    keyword_data = get_keyword_data()
+    return jsonify(keyword_data)
+
 
 
 @app.route('/positions_list')

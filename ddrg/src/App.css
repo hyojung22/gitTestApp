@@ -642,16 +642,48 @@
 
 
 /** M_news css 공간 */
+
+.container {
+    display: flex;
+}
+.right-content, .left-content {
+    flex:-1;
+    padding:10px;
+}
+
 .news_mainText {
     list-style-type: none;
-    padding-top: 100px;
-    padding-right: 130px;
-    padding-left: 130px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
     font-family: 'NanumSquareNeo-Variable';
     line-height: 50px;
-    font-size: 20px;
+    font-size: 18px;
     color: #3e448b;
-    height: 1000px;
+
+
+    /* 테두리 박스 */
+    /* border: 2px solid #3e448b;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
+    
+}
+
+.left-content {
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-right:20px;
+    max-height: 400px;
+    overflow:auto;
+
+    border: 2px solid #3e448b;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
     
 }
 
@@ -661,14 +693,17 @@
     border: none;
     background-color: white;
     font-weight:bold;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s;
     font-size: 15px;
     font-family: 'NanumSquareNeo-Variable';   
-    color: #3e448b5b;     
+    color: #3e448b5b;    
+    padding: 3px 6px; 
 
 }
 .show-more-button:hover {
     background-color: whitesmoke;
+    padding: 3px 6px;
+    border-radius: 6px;
 }
 
 .news-contents {
@@ -682,6 +717,75 @@
     margin-bottom: 35px;
 }
 
-.news_container {
-    border-style: solid 1px black;
+/** 커뮤니티 키워드  */
+.right-content {
+    padding-top: 200px;
+    margin-left: 10px;
+    margin-right:20px;
+}
+
+
+.keywords_box {
+    list-style-type: none;
+    font-family: 'NanumSquareNeo-Variable';
+    line-height: 50px;
+    font-size: 15px;
+    color: #3e448b;
+    height: 300px;
+    width: 400px;
+    text-align: center;
+    padding: 3px 6px; 
+    
+    /* 테두리 박스 */
+    border: 2px solid #3e448b;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+.keyword_link {
+    text-decoration-line: none;
+    color: inherit;
+    transition: background-color 0.3s;
+    margin: 15px;
+
+} 
+/* .keyword_text {
+
+
+} */
+.keyword_link:hover {
+    background-color: whitesmoke;
+    padding: 3px 6px;
+    border-radius: 6px;
+}
+
+/** scroll bar 속성 */
+::-webkit-scrollbar {
+    width: 10px;
+
+
+}
+::-webkit-scrollbar-thumb {
+    background-color: #3e448b;
+    border-radius:3px;
+    
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #292d58;
+}
+
+::-webkit-scrollbar-track {
+    background-color: whitesmoke; /* 스크롤바 트랙 영역 색상 */
+    margin:15px;
+    border-radius:3px;
+  }
+
+::-webkit-scrollbar-track-vertical {
+    border-radius:3px;
+
+    overflow: auto;
 }
