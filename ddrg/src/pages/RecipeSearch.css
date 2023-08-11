@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bigBox {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  /* .fullBox{
+    background-color: #ccc;
+  } */
+  
+    .title {
+    text-align: center;
+    font-family: 'MaplestoryOTFBold';
+  }
+  
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .leftBox {
+    width: 50%;
+    flex: 1;
+    display: table;
+  }
+  
+  .search-Box{
+    display: flex;
+    justify-content: right;
+  }
+  .back-btn{
+    font-family: 'MaplestoryOTFBold';
+  }
+  .search-Box2{
+    height: 20px;
+    width: 200px;
+    border: 1px solid black;
+    font-family: 'MaplestoryOTFBold';
+  }
+
+  .search-btn{
+    height: 24px;
+    width: 50px;
+    color:aliceblue;
+    background-color: black;
+    border: 1px solid black;
+    font-family: 'MaplestoryOTFBold';
+  }
+  .title-Box {
+    border: 1px solid #ccc;
+    /* padding: 10px; */
+    margin-top: 20px;
+    width: 100%;
+    font-family: 'MaplestoryOTFBold';
+  }
+  
+  .resultName {
+    margin-top: 10;
+    text-align: center;
+  }
+  .resultList{
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    float: left;
+    margin-top: 10px;
+  }
+  
+  .contentBox {
+    border-radius: 30px;
+    padding: 8px;
+    float: left;
+  }
+  .cookBox1, .matBox1, .matBox2 {
+    margin: 10px;
+    text-align: center;
+    font-family: 'MaplestoryOTFBold';
+  } 
+  .imageBox{
+    text-align: center;
+  }
+  .imgBox {
+      border-radius: 30px;
+      width: 300px;
+      height: 200px;
+      object-fit: fill;
+      margin-right: 10;
+  }
+  .atag{
+    border-radius: 30px;
+  }
+  
+  
+  
