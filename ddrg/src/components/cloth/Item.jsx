@@ -42,10 +42,14 @@ const Item = ({kinds, explainValue}) => {
   // 상위로 보내는 정보
   const handleDetail = (num) =>{
     const info = [
-      fashionInfo.가격[kindNum[kinds]+num],
-      fashionInfo.브랜드[kindNum[kinds]+num],
-      fashionInfo.옷[kindNum[kinds]+num],
-      fashionInfo.주소[kindNum[kinds]+(num-1)],
+      // fashionInfo.가격[kindNum[kinds]+num],
+      // fashionInfo.브랜드[kindNum[kinds]+num],
+      // fashionInfo.옷[kindNum[kinds]+num],
+      // fashionInfo.주소[kindNum[kinds]+(num-1)],
+      data1[kindNum[kinds]+num]["가격"],
+      data1[kindNum[kinds]+num]["브랜드"],
+      data1[kindNum[kinds]+num]["옷"],
+      data1[kindNum[kinds]+(num-1)]["주소"],
       require(`../../img/패션img/${kinds}/${kinds}${num}.jpg`)
     ]
     explainValue(info)
