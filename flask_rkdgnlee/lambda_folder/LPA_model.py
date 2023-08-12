@@ -8,7 +8,7 @@ from datetime import datetime
 
 ## 매일 파일을 가져와야 함
 ## 데이터 csv파일로 저장하기 
-daily_all_commu = pd.read_csv("community_content\\230804_daily_commu.csv", encoding='utf-8-sig')
+daily_all_commu = pd.read_csv("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\community_content\\230803_daily_commu.csv", encoding='utf-8-sig')
 daily_all_commu = daily_all_commu.loc[:, "content"].to_list()
 
 
@@ -60,11 +60,9 @@ for lii in keyword_li:
     keyword_list.append(senten)
 print(keyword_list)
 
+
+
 keyword_df = pd.DataFrame(keyword_list, columns= [datetime.today().strftime("%Y%m%d")])
-
-
-
-
 
 if not os.path.exists("keyword.csv"):
     keyword_df.to_csv("keyword.csv", index=False, encoding='utf-8-sig')

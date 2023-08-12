@@ -94,30 +94,28 @@ cursor = connection.cursor()
 
 
 
-def create_news_table():
-    try:
-        create_query = (
+# def create_news_table():
+#     try:
+#         create_query = (
             
-            "CREATE TABLE news ("
-            "id NUMBER PRIMARY KEY,"
-            "content VARCHAR2(1500 CHAR),"
-            "prediction NUMBER"
-            ")"
-        )
+#             "CREATE TABLE news ("
+#             "id NUMBER PRIMARY KEY,"
+#             "content VARCHAR2(1500 CHAR),"
+#             "prediction NUMBER"
+#             ")"
+#         )
         
-        cursor.execute(create_query)
-        print("Table news created successfully.")
+#         cursor.execute(create_query)
+#         print("Table news created successfully.")
         
-        connection.commit()
-    except cx_Oracle.Error as error:
-        print("Error:", error)
-    finally:
-        cursor.close()
-        connection.close()
+#         connection.commit()
+#     except cx_Oracle.Error as error:
+#         print("Error:", error)
+#     finally:
+#         cursor.close()
+#         connection.close()
 
-create_news_table()
-
-
+# create_news_table()
 
 
 
@@ -125,7 +123,33 @@ create_news_table()
 
 
 
+create_table_query = """
+CREATE TABLE keyword_table (
+    keyword VARCHAR2(255)
+)
+"""
+cursor.execute(create_table_query)
+
+# 커밋 및 연결 종료
+connection.commit()
+cursor.close()
+connection.close()
 
 
 
 
+# def drop_table(table_name):
+#     try:
+#         drop_query = f"DROP TABLE {table_name}"
+#         cursor.execute(drop_query)
+#         print(f"Table {table_name} dropped successfully.")
+        
+#         connection.commit()
+#     except cx_Oracle.Error as error:
+#         print("Error:", error)
+#     finally:
+#         cursor.close()
+#         connection.close()
+
+# # Replace 'news' with your actual table name
+# drop_table('keyword_table')

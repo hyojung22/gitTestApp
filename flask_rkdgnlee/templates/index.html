@@ -11,8 +11,19 @@
 
     <div id="fruits1"></div>
     <div id="fruits2"></div>
+    <div id="fruits3"></div>
+    <div id="fruits4"></div>
+    
     <script>
         // Function to fetch JSON data
+        function fetchJSONData_keyword() {
+            fetch('http://127.0.0.1:5021/keyword_list') // Replace 'your_json_data.json' with your JSON source URL or file path
+                .then(response => response.json())
+                .then(data => displayJSONData_keyword(data))
+                .catch(error => console.error('Error fetching JSON data:', error))
+        }
+
+
         function fetchJSONData() {
             fetch('http://127.0.0.1:5021/news_list') // Replace 'your_json_data.json' with your JSON source URL or file path
                 .then(response => response.json())
@@ -31,6 +42,12 @@
                 .then(data => displayJSONData_books(data))
                 .catch(error => console.error('Error fetching JSON data:', error))
         }
+        function fetchJSONData_fashion() {
+            fetch('http://127.0.0.1:5021/fashion_list') // Replace 'your_json_data.json' with your JSON source URL or file path
+                .then(response => response.json())
+                .then(data => displayJSONData_fashion(data))
+                .catch(error => console.error('Error fetching JSON data:', error))
+        }
         // Function to display JSON data on the webpage
         function displayJSONData(data) {
             const jsonDisplay = document.getElementById('jsonDisplay');
@@ -44,6 +61,20 @@
                         li.appendChild(textNode);
                         document.getElementById('fruits').appendChild(li)
                     }
+                }
+            console.log(data)
+
+        }
+        function displayJSONData_keyword(data) {
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            
+            for (i=0;i<data.length;i++)
+                {
+                        const li = document.createElement("li");
+                        li.setAttribute('id', i);
+                        const textNode = document.createTextNode(JSON.stringify(data[i]['keyword'][0]));
+                        li.appendChild(textNode);
+                        document.getElementById('fruits3').appendChild(li)
                 }
             console.log(data)
 
@@ -79,11 +110,26 @@
                 }
             console.log(data)
         }
+        function displayJSONData_fashion(data) {
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            
+            for (i=0;i<data.length;i++)
+                {
+                    
+                        const li = document.createElement("li");
+                        li.setAttribute('id', i);
+                        const textNode = document.createTextNode(JSON.stringify(data[i]['옷']));
+                        li.appendChild(textNode);
+                        document.getElementById('fruits4').appendChild(li)
+                }
+            console.log(data)
+        }
         // Call the fetchJSONData function when the page loads
         // window.onload = fetchJSONData;
+        // window.onload = fetchJSONData_keyword
         // window.onload = fetchJSONData_position;
-        window.onload = fetchJSONData_books
-
+        // window.onload = fetchJSONData_books
+        window.onload = fetchJSONData_fashion
     </script>
 </body>
 

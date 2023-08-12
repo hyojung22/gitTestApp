@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import fashionInfo from '../../etc/fashion.json'
 
+
 const Item = ({kinds, explainValue}) => {
+
+  const [data1, setData1] = useState([]);
+  
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get("http://127.0.0.1:5021/fashion_list");
+        setData1(result.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // 오류 처리: 사용자에게 오류 메시지를 보여줄 수 있음
+      }
+    };
+    
+    fetchData();
+  }, []);
+
+
 
   const array = []
   for(let i=1;i<91;i++){
@@ -21,10 +42,14 @@ const Item = ({kinds, explainValue}) => {
   // 상위로 보내는 정보
   const handleDetail = (num) =>{
     const info = [
-      fashionInfo.가격[kindNum[kinds]+num],
-      fashionInfo.브랜드[kindNum[kinds]+num],
-      fashionInfo.옷[kindNum[kinds]+num],
-      fashionInfo.주소[kindNum[kinds]+(num-1)],
+      // fashionInfo.가격[kindNum[kinds]+num],
+      // fashionInfo.브랜드[kindNum[kinds]+num],
+      // fashionInfo.옷[kindNum[kinds]+num],
+      // fashionInfo.주소[kindNum[kinds]+(num-1)],
+      data1[kindNum[kinds]+num]["가격"],
+      data1[kindNum[kinds]+num]["브랜드"],
+      data1[kindNum[kinds]+num]["옷"],
+      data1[kindNum[kinds]+(num-1)]["주소"],
       require(`../../img/패션img/${kinds}/${kinds}${num}.jpg`)
     ]
     explainValue(info)
