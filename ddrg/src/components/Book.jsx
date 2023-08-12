@@ -1,6 +1,6 @@
 import React from 'react'
 
-const book = ({All, category, randomPick, cateplus}) => {
+const book = ({All, randomPick, category, catePlus}) => {
 
 
   
@@ -8,12 +8,14 @@ const book = ({All, category, randomPick, cateplus}) => {
 
   return (
     <div className='bookInfo'> 
-        <img src={imageSrc} className='bookCover'/>
+        <a href={All.주소[randomPick+catePlus]}>
+          <img src={imageSrc} className='bookCover'/>
+        </a>
         <div className='book_cover_blink'/>
         <div className='book_textBox'>
-          <strong className='book_content1'>{All.제목[randomPick+cateplus]}</strong>
+          <strong className='book_content1'>{All.제목[randomPick+catePlus]}</strong>
           <hr/>
-          <strong className='book_content2'>{All.저자[randomPick+cateplus]} 지음 | {All.가격[randomPick+cateplus]}</strong>
+          <strong className='book_content2'>{All.저자[randomPick+catePlus]} 지음 | {All.가격[randomPick+catePlus]}</strong>
         </div>
     </div>
   )

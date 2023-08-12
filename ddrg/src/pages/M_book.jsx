@@ -5,6 +5,7 @@ import Book from '../components/Book.jsx'
 import shape_icon from '../img/도서img/circle.png'
 import shape_icon1 from '../img/도서img/Random_img.png'
 import bookImgSrc from '../img/도서img/book_bar.png'
+import mouseImg from '../img/쥐.png'
 
 const M_book = () => {
 
@@ -23,10 +24,11 @@ const M_book = () => {
     return left+half
   }
 
+
   // 책 고르기
   let randomPick = [~~(Math.random()*20)] // 20권 중에
   let [category, setCategory] = useState('종합');
-  let [cateplus, setCateplus] = useState(0);
+  let [catePlus, setCatePlus] = useState(0);
 
 
 
@@ -46,7 +48,7 @@ const M_book = () => {
 
   const cellectHandle = (category,num,e) =>{
     setCategory(category)
-    setCateplus(num)
+    setCatePlus(num)
     bestBook()
 
     setShapePosition(bookSelect(e)) // 해당 카테고리에 맞는 위치로 설정
@@ -69,9 +71,9 @@ const M_book = () => {
         <button onClick={(e)=>cellectHandle('자기계발',120,e)}>자기계발</button>
       </div>
       <div className='bookCase'>
-        <Book All={All} category={category} randomPick={randomPick[0]} cateplus={cateplus}/>
-        <Book All={All} category={category} randomPick={randomPick[1]} cateplus={cateplus}/>
-        <Book All={All} category={category} randomPick={randomPick[2]} cateplus={cateplus}/>
+        <Book All={All} category={category} randomPick={randomPick[0]} catePlus={catePlus}/>
+        <Book All={All} category={category} randomPick={randomPick[1]} catePlus={catePlus}/>
+        <Book All={All} category={category} randomPick={randomPick[2]} catePlus={catePlus}/>
         <img src={bookImgSrc} className='bookBar'/>
       </div>
     </div>

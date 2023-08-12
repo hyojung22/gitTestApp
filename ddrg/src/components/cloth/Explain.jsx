@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import tag from '../../img/패션img/explain_tag.png';
+import earth from '../../img/패션img/homepage_icon.png';
 
 const Explain = ({explainInfo, explainEnd}) => {
 
-  const style = {
+  const style = { // main center
     display : 'flex',
     flexDirection: 'column',
     justifyContent : 'center',
@@ -12,61 +14,62 @@ const Explain = ({explainInfo, explainEnd}) => {
     width : '100%',
     height : '100%'
   }
-  const cover = {
+  const cover = { // 반투명 배경
     position : 'absolute',
     width : '100%',
     height : '100%',
     opacity : '0.4',
-    backgroundColor : 'gray'
+    backgroundColor : '#3e448b'
   }
-  const backBlur = {
-    position : 'absolute',
-    width : '100%',
-    height : '100%',
-    backdropFilter: 'blur(10px)'
-  }
-  const back = {
+  // const backBlur = { // 배경 블러
+  //   position : 'absolute',
+  //   width : '100%',
+  //   height : '100%',
+  //   backdropFilter: 'blur(1px)'
+  // }
+  const backTag = { // 흰 사각형
     position : 'absolute',
     borderRadius: '20px',
-    width : '80%',
-    height : '30%',
-    backgroundColor : 'white'
+    width : '50vh',
+    height : '100%',
   }
-  const groub = {
+  const contentBox = { // contentBox
     display : 'flex',
+    flexDirection : 'column',
     alignItems : 'center',
-    width : '80%',
-    height : '30%',
-    position : 'absolute'
+    width : '38vh',
+    maxWidth : '100vw',
+    height : '80%',
+    position : 'absolute',
+    top: '25%',
+    // transform: 'rotate(-4deg)',
   }
   const img = explainInfo[4]
 
   const handleEnd = () =>{
     explainEnd(false)
   }
-  const endStyle = {
-    position : 'absolute',
-    right : '10%',
-    bottom : '35%',
-    width : '8vh',
-    height : '8vh',
-    backgroundColor : 'black'
-  }
+
   return (
-    <div style={style}>
+    <div style={style} onClick={handleEnd}>
       <div style={cover}/>
-      <div style={backBlur}/>
-      <div style={back}/>
-      <div style={groub}>
+      {/* <div style={backBlur}/> */}
+      <img style={backTag} src={tag}/>
+      <div style={contentBox}>
         <img className='fashion_ex_img' src={img}/>
         <div className='fashion_ex_text'>
-          <div className='fashion_ex a'>이름 : {explainInfo[2]}</div>
-          <div className='fashion_ex b'>브랜드 : {explainInfo[1]}</div>
-          <div className='fashion_ex c'>가격 : {explainInfo[0]}</div>
-          <div className='fashion_ex'><a href={explainInfo[3]} style={{textDecoration: 'none'}}>바로가기</a></div>
+          <div className='fashion_ex a'>{explainInfo[2]}</div>
+          <div className='fashion_ex b'>{explainInfo[1]}</div>
+          <div className='fashion_exGroup'>
+            <div className='fashion_ex c'>{explainInfo[0]}</div>
+            <div className='fashion_ex'>
+              <a href={explainInfo[3]}>
+                <img src={earth} style={{height:'5vh'}}/>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div onClick={handleEnd} style={endStyle}/>
     </div>
   )
 }
