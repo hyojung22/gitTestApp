@@ -1,6 +1,7 @@
 // components/RecipeDetail.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import './RecipeDetail.css';
+import backImg from '../img/backButton.png'
 
 function RecipeDetail({ recipe, onGoBack }) {
   const manualFields = Array.from({ length: 20 }, (_, index) => `MANUAL${String(index + 1).padStart(2, '0')}`);
@@ -16,36 +17,41 @@ function RecipeDetail({ recipe, onGoBack }) {
     }
   }
 
-  return (
-    <div>
-      <button className='back-btn' onClick={onGoBack}>뒤로가기</button>
-    <div className='detail-Box'>
-      <div className='detail-small'>
-        <div className='detail-Box2'>
-          <h2 className='detail-title'>{recipe.RCP_NM}</h2>
-          <div className='detail-imgbox'>
-            <img className='detail-img' src={recipe.ATT_FILE_NO_MAIN} alt={`${recipe.RCP_NM} 이미지`} />
-            <p className='detail-ingredients'>재료: {recipe.RCP_PARTS_DTLS}</p>
-            <p className='detail-cook'>조리 방법: {recipe.RCP_WAY2}</p>
-          </div>
-        </div>
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
-        <div className='detail-Box3'>
-          <h2 className='detail-way-title'>만드는 법</h2>
-          <div className='detail-order'>
-            <div className='detail-order-box'>
-              {combinedContent.map((item, index) => (
-                item.type === 'text' ?
-                  <div className='order-turn' key={`${recipe.RCP_SEQ}-${index}`}>{item.content}</div> :
-                  <div className='detail-order-imgbox' key={`${recipe.RCP_SEQ}-${index}`}>
-                    <img className='detail-order-img' src={item.content} alt={`만드는 법 이미지 ${index}`} />
-                  </div>
-              ))}
+  return (
+    <div className='center'>
+      <div className='cook_detailBox'>
+        <div className='cook_detailBox1'>
+          <button className='back-btn' onClick={onGoBack}>
+            <img src={backImg}/>
+          </button>
+          <div className='cook_detailImg'>
+            <img className='cook_imgBox' src={recipe.ATT_FILE_NO_MAIN} alt={`${recipe.RCP_NM} 이미지`} />
+            <strong className='cook_name'>{recipe.RCP_NM}</strong>
+            <hr/>
+            <div className='cook_text_between'>
+              <div className='cook_square'/>
+              <strong className='cook_kind'>{recipe.RCP_PAT2}</strong>
+              <div className='cook_square'/>
+              <strong className='cook_how'>{recipe.RCP_WAY2}</strong>
             </div>
           </div>
         </div>
+        <div className='cook_detailBox2'>
+          <strong className='detail-ingredients_name'>| 재료 |</strong>
+          <strong className='detail-ingredients'>{recipe.RCP_PARTS_DTLS}</strong>
+          {combinedContent.map((item, index) => (
+            item.type === 'text' 
+            ? <div className='cook_detail_text' key={`${recipe.RCP_SEQ}-${index}`}>{item.content}</div> 
+            : <img className='cook_detail_img' src={item.content} alt={`만드는 법 이미지 ${index}`} />
+          ))}
+        </div>
       </div>
-    </div>
+
+      
     </div>
   );
 }

@@ -77,6 +77,12 @@
 }
 
 /* logo */
+.blankSpace {
+    width: 100vw;
+    height:80px;
+
+    position: relative;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -85,8 +91,9 @@
     width: 100vw;
     height:80px;
     background-color:#3e448b;
+    z-index: 10;
 
-    position: relative;
+    position: fixed;
 }
 .logo_buttonBox {
     display: flex;
@@ -119,6 +126,8 @@
 .logo_button:hover {
     font-weight: bolder;
 }
+
+/* M_cook */
 
 /* M_fashion */
 .fashion_range {

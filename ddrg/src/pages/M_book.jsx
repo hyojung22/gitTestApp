@@ -5,7 +5,6 @@ import Book from '../components/Book.jsx'
 import shape_icon from '../img/도서img/circle.png'
 import shape_icon1 from '../img/도서img/Random_img.png'
 import bookImgSrc from '../img/도서img/book_bar.png'
-import mouseImg from '../img/쥐.png'
 
 const M_book = () => {
 

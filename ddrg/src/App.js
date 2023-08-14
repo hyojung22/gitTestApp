@@ -5,6 +5,7 @@ import Logo from './components/Logo';
 import StartPage from './pages/StartPage';
 import M_book from './pages/M_book'
 import M_cook from './pages/M_cook';
+import M_cookDetail from './pages/M_cookDetail';
 import M_fashion from './pages/M_fashion';
 import M_news from './pages/M_news';
 import M_festival from './pages/M_festival.jsx';
@@ -17,6 +18,7 @@ function App() {
 
   const location = useLocation();
   const logoView = !(location.pathname === '/')
+
   
   return (
     <div className='app'>
@@ -28,6 +30,7 @@ function App() {
         <Route path='/main/book' element={<M_book/>}/>
         <Route path='/main/fashion' element={<M_fashion/>}/>
         <Route path='/main/cook' element={<M_cook/>}/>
+        <Route path='/main/cook/detail' element={<M_cookDetail/>}/>
         <Route path='/main/news' element={<M_news/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>

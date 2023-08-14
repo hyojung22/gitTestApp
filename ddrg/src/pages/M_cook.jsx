@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { fetchInitialRecipes } from '..//etc/api';
 import './RecipeSearch.css';
-import RecipeDetail from './RecipeDetail';
+import RecipeDetail from './RecipeDetail.jsx';
+
+import cookCharacter from '../img/요리img/character.png'
+import searchIcon from '../img/요리img/search.png';
 
 function RecipeSearch() {
   const [ingredients, setIngredients] = useState('');
@@ -22,6 +25,12 @@ function RecipeSearch() {
     }
     fetchData();
   }, []);
+
+  const handleEnterPress = e =>{
+    if(e.key == 'Enter'){
+      handleSearch()
+    }
+  }
 
   const handleSearch = async () => {
     if (!ingredients) {
@@ -54,47 +63,44 @@ function RecipeSearch() {
 
 
   return (
-    <div className='fullBox'>
-      <div className='bigBox'>
-        <h1 className='title'>레시피 검색</h1>
-        <div className='flexContainer'>
-          <div className='leftBox'>
-            <div className='search-Box'>
-              <input className='search-Box2'
-                type="text"
-                value={ingredients}
-                onChange={(e) => setIngredients(e.target.value)}
-                placeholder="재료를 입력하세요"
-              />
-              {/* 재료 검색 버튼 */}
-              <button className='search-btn' onClick={handleSearch}>검색</button>
-            </div>
-
-            {/* 검색한 레시피 표시 */}
-            {selectedRecipe ? (
-              <RecipeDetail recipe={selectedRecipe} onGoBack={goBack} />
-            ) : (
-              <div className='title-Box'>
-                <h2 className='resultName'>요리 검색 결과</h2>
-                <div className='resultList'>
-                  {recipes.map((recipe) => (
-                    <div className='ilBox' key={recipe.RCP_SEQ}>
-                      <div className='contentBox'>
-                        <button className='atag' onClick={() => handleRecipeClick(recipe)}>
-                          <img className='imgBox' src={recipe.ATT_FILE_NO_MAIN} alt={`${recipe.RCP_NM} 이미지`} />
-                          <p className='cookBox1'>{recipe.RCP_NM}</p>
-                          <p className='matBox1'>요리종류 : {recipe.RCP_PAT2}</p>
-                          <p className='matBox2'>조리 방법 : {recipe.RCP_WAY2}</p>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+    <div className='center'>
+        {/* 검색한 레시피 표시 */}
+        {selectedRecipe 
+        ? (<RecipeDetail recipe={selectedRecipe} onGoBack={goBack} />) 
+        : (
+          <div className='cook_bigBox'>
+            <div className='cook_topBox'>
+              <div className='cook_searchBox'>
+                <img className='cook_searchIcon' src={searchIcon}/>
+                <input className='cook_search'
+                  type="text"
+                  value={ingredients}
+                  onChange={(e) => setIngredients(e.target.value)}
+                  onKeyDown={handleEnterPress}
+                  placeholder="재료를 입력하세요"
+                />
               </div>
-            )}
+              <img className='cookCharacter' src={cookCharacter}/>
+            </div>
+            <div className='resultList'>
+              {recipes.map((recipe) => (
+                <div className='cook_ilBox' key={recipe.RCP_SEQ}>
+                  <button className='cook_atag' onClick={() => handleRecipeClick(recipe)}>
+                    <img className='cook_imgBox' src={recipe.ATT_FILE_NO_MAIN} alt={`${recipe.RCP_NM} 이미지`} />
+                    <strong className='cook_name'>{recipe.RCP_NM}</strong>
+                    <hr/>
+                    <div className='cook_text_between'>
+                      <div className='cook_square'/>
+                      <strong className='cook_kind'>{recipe.RCP_PAT2}</strong>
+                      <div className='cook_square'/>
+                      <strong className='cook_how'>{recipe.RCP_WAY2}</strong>
+                    </div>
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+        )}
     </div>
   );
 }

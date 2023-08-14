@@ -1,3 +1,83 @@
+.cook_detailBox {
+    margin: 10vh;
+    display: flex;
+    justify-content: start;
+    width: 800px;
+
+    position: relative;
+}
+
+.cook_detailBox1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width : 400px;
+    padding-top: 30px;
+
+    position: fixed;
+}
+.cook_detailImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    padding: 0;
+    border: 3px solid #3e448b;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 5px 5px 7px 2px rgb(185, 185, 185);
+}
+.back-btn{
+    position: absolute;
+    left: 0;
+    background-color: transparent;
+    border: none;
+    width: 13%;
+}
+.back-btn>img {
+    width: 100%;
+}
+
+.cook_detailBox2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width : 400px;
+    position: absolute;
+    right: 0;
+}
+.detail-ingredients_name {
+    position: relative;
+    font-size: 25px;
+    color:#3e448b;
+}
+.detail-ingredients {
+    margin:20px 0 40px 0;
+    border-radius: 20px;
+    padding: 15px;
+    width: 70%;
+    font-size: 2.5vh;
+    font-weight: bold;
+    line-height: 3vh;
+    background-color: #eff1ff;
+}
+.cook_detail_img {
+    width: 70%;
+    border-radius: 20px;
+}
+.cook_detail_text {
+    width: 70%;
+    font-size: 3vh;
+    font-weight: bold;
+    line-height: 5vh;
+    margin: 3vh 0 5vh 0;
+}
+
+
+
+
+
+
 .detail-Box{
     max-width: 1000px;
     margin: 0 auto;
@@ -9,11 +89,6 @@
     padding: 50p;
     display: flex;
 }
-.back-btn{
-    font-family: 'MaplestoryOTFBold';
-    color:aliceblue;
-    background-color: black;
-  }
 
 .detail-Box2{
     flex:1;
@@ -32,12 +107,6 @@
     font-family: 'MaplestoryOTFBold';
     text-align: center;
 }
- 
-  .detail-order-imgbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
 .detail-img{
     width: 300px;
