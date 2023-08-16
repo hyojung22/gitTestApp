@@ -154,9 +154,9 @@ def job1():
 # saving the dataframe
     df.to_csv('2023_08_16_daily_all_commu.csv')
 
-# @sched.scheduled_job('cron', hour='9', id='test_2')
-# def main():
-    # job3()
+@sched.scheduled_job('cron', hour='9', id='test_2')
+def main():
+    job3()
 
 
 ########################################################################
