@@ -123,17 +123,18 @@ cursor = connection.cursor()
 
 
 
-create_table_query = """
-CREATE TABLE keyword_table (
-    keyword VARCHAR2(255)
-)
-"""
-cursor.execute(create_table_query)
+# create_table_query = """
+# CREATE TABLE keyword_table (
+#     id NUMBER PRIMARY KEY,
+#     keyword VARCHAR2(255)
+# )
+# """
+# cursor.execute(create_table_query)
 
-# 커밋 및 연결 종료
-connection.commit()
-cursor.close()
-connection.close()
+# # 커밋 및 연결 종료
+# connection.commit()
+# cursor.close()
+# connection.close()
 
 
 
