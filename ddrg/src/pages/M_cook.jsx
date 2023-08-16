@@ -61,6 +61,16 @@ function RecipeSearch() {
     setSelectedRecipe(null);
   }
 
+  // 초기화면
+  const [searchBlank, setSearchBlank] = useState(false);
+  useEffect(()=>{
+    if(ingredients==''&&recipes.length==0){
+      setSearchBlank(false)
+    }else {
+      setSearchBlank(true)
+    }
+  }, [ingredients])
+
 
   return (
     <div className='center'>
@@ -69,7 +79,8 @@ function RecipeSearch() {
         ? (<RecipeDetail recipe={selectedRecipe} onGoBack={goBack} />) 
         : (
           <div className='cook_bigBox'>
-            <div className='cook_topBox'>
+            <div className={searchBlank ? 'cook_topBox' : 'cook_topBox_first'}>
+              {!searchBlank && <img className='cookCharacter_first' src={cookCharacter}/>}
               <div className='cook_searchBox'>
                 <img className='cook_searchIcon' src={searchIcon}/>
                 <input className='cook_search'
@@ -80,7 +91,7 @@ function RecipeSearch() {
                   placeholder="재료를 입력하세요"
                 />
               </div>
-              <img className='cookCharacter' src={cookCharacter}/>
+              {searchBlank && <img className='cookCharacter' src={cookCharacter}/>}
             </div>
             <div className='resultList'>
               {recipes.map((recipe) => (

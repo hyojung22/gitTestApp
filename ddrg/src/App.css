@@ -127,8 +127,6 @@
     font-weight: bolder;
 }
 
-/* M_cook */
-
 /* M_fashion */
 .fashion_range {
     display: flex;
@@ -667,21 +665,127 @@
 
 .container {
     display: flex;
+    width: 1000px;
+    height: 85vh;
+    box-sizing: border-box;
+
+    position: relative;
+    padding-top: 55px;
 }
-.right-content, .left-content {
-    flex:-1;
-    padding:10px;
+.left-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 60%;
+}
+.news_text1 {
+    width:fit-content;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.news_mainText {
+    width: 95%;
+    height: 80%;
+    list-style-type: none;
+    padding: 20px;
+    line-height: 30px;
+    font-size: 25px;
+    color: #3e448b;
+
+    border: 2px solid #3e448b;
+    overflow: auto;
+    box-sizing: border-box;
+}
+.news_content {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.news_back {
+    height: 30px;
+    border: none;
+    background-color: transparent;
+}
+.news_back>img {
+    height: 100%;
+}
+.news_content2 {
+    font-size: 18px;
+    overflow: hidden;
+}
+.more-box {
+    display:flex;
+    justify-content: end;
+}
+.show-more-button {
+    width: 70px;
+    background-color: transparent;
+    font-weight:bold;
+    font-size: 20px;  
+
+    border: 2px solid #3e448b;
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+.show-more-button:hover {
+    background-color: #3e448b;
+    color: white;
 }
 
-.news_mainText {
-    list-style-type: none;
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-family: 'NanumSquareNeo-Variable';
-    line-height: 50px;
-    font-size: 18px;
+.right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+.news_text2 {
+    width:fit-content;
+    height: 50px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.news_searchImg {
+    width: 85%;
+    height: 30px;
+    border-radius: 30px;
+    border: 2px solid #3e448b;
+    overflow: hidden;
+    margin-top: 18px;
+}
+.news_searchImg>img {
+    height: 100%;
+}
+.keywords_box {
+    box-sizing: border-box;
+    padding: 10px 0 10px 30px;
+    list-style: circle;
+    line-height: 40px;
+    font-size: 15px;
     color: #3e448b;
+    width: 90%;
+    
+    border: 2px solid #3e448b;
+    border-radius: 20px;
+}
+.news_angle {
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #3e448b;
+    border-left: 2px solid #3e448b;
+
+    position: absolute;
+    top: 121px;
+    left: 15%;
+    transform: rotate(45deg);
+    background-color: white;
+}
+.news_character {
+    height: 20%;
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+}
 
 
     /* 테두리 박스 */
@@ -691,80 +795,17 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px; */
     
-}
 
-.left-content {
-    margin-top: 150px;
-    margin-left: 20px;
-    margin-right:20px;
-    max-height: 400px;
-    overflow:auto;
 
-    border: 2px solid #3e448b;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 10px;
-    
-}
 
-.show-more-button {
-    display: block;
-    margin-top: 5px;
-    border: none;
-    background-color: white;
-    font-weight:bold;
-    transition: background-color 0.3s;
-    font-size: 15px;
-    font-family: 'NanumSquareNeo-Variable';   
-    color: #3e448b5b;    
-    padding: 3px 6px; 
 
-}
-.show-more-button:hover {
-    background-color: whitesmoke;
-    padding: 3px 6px;
-    border-radius: 6px;
-}
 
-.news-contents {
-    max-height: 2em ; /** 2em: 2줄 */
-    overflow: hidden;
-}
 
-.more-box {
-    display:flex;
-    justify-content: center;
-    margin-bottom: 35px;
-}
 
 /** 커뮤니티 키워드  */
-.right-content {
-    padding-top: 200px;
-    margin-left: 10px;
-    margin-right:20px;
-}
 
 
-.keywords_box {
-    list-style-type: none;
-    font-family: 'NanumSquareNeo-Variable';
-    line-height: 50px;
-    font-size: 15px;
-    color: #3e448b;
-    height: 300px;
-    width: 400px;
-    text-align: center;
-    padding: 3px 6px; 
-    
-    /* 테두리 박스 */
-    border: 2px solid #3e448b;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
+
 
 
 .keyword_link {
@@ -786,7 +827,7 @@
 
 /** scroll bar 속성 */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 
 
 }

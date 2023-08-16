@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import Item from '../components/cloth/Item.jsx';
-import Explain from '../components/cloth/Explain.jsx';
+import React, {useState, useRef, useEffect } from 'react';
+import Item from '../src/components/cloth/Item.jsx';
+import Explain from '../src/components/cloth/Explain.jsx';
 import imgParts1 from '../img/패션img/parts1.png'
 import imgParts2 from '../img/패션img/parts2.png'
 import imgParts3 from '../img/패션img/parts3.png'
@@ -15,53 +15,53 @@ const M_fashion = () => {
   const piece_height = max_height*0.25
 
   // Drag 관련 코드
-  const [startLeft, setStartLeft] = useState(0);
-  let instLeft = [0,0,0,0];
-  const [dragging, setDragging] = useState();
-  const [dragGo, setDragGo] = useState();
+
+  const [choice,setChoice] = useState(0);
+  const [drag,setDrag] = useState(0);
   const [left,setLeft] = useState([0,0,0,0]);
-  const [isClick, setIsClick] = useState(false)
+  // const [dragging,setDragging] = useState(false);
+  // class에 삼항연산자로 넣어서 드래그할 때 스타일을 따로 넣을 수 있다.
+  const dragNode = useRef();
+  let Xstart = 0;
+  let Xend = 0;
 
-  const handleDragStart = (e) =>{
-    setDragging(true);
-    // console.log('start', e.pageX);
-
-    setStartLeft(e.currentTarget.offsetLeft)
-    setDragGo(e.pageX)
-  }
-  const handleDragMove = (e, num) => {
-    if (!dragging) return;
-
-    instLeft = [...left];
-    instLeft[num] = startLeft + e.pageX - dragGo
-    setLeft(instLeft)
+  const handleDragStart = (e, num) =>{
+    // console.log('drag starting', e.screenX);
+    Xstart = e.screenX;
+    // setDragging(true);
+    setChoice(num);
+    dragNode.current = e.target;
+    dragNode.current.addEventListener('dragend',handleDragEnd);
   }
   const handleDragEnd = (e) =>{
-    setDragging(false);
-    if(Math.abs(e.currentTarget.offsetLeft-startLeft)<10){
-      setIsClick(true);
-      console.log('click');
-    }else{
-      setIsClick(false)
-      console.log('drag');
-    }
+    // console.log('drag ending..', e.screenX);
+    Xend = e.screenX;
+    setDrag(Xend-Xstart);
+    // setDragging(false);
+    dragNode.current.removeEventListener('dragend', handleDragEnd);
+    dragNode.current = null;
   }
   const style1 = {
     height:piece_height,
-    left:left[0] + 'px',
+    left:left[0],
   }
   const style2 = {
     height:piece_height,
-    left:left[1] + 'px',
+    left:left[1],
   }
   const style3 = {
     height:piece_height,
-    left:left[2] + 'px',
+    left:left[2],
   }
   const style4 = {
     height:piece_height,
-    left:left[3] + 'px',
+    left:left[3],
   }
+  useEffect(()=>{
+    const leftArr = [...left]
+    leftArr[choice] = left[choice]+drag
+    setLeft(leftArr)
+  },[drag])
 
   // explain
 
@@ -78,7 +78,6 @@ const M_fashion = () => {
 
   return (
     <div className='center'>
-      <div className=''/>
       <div className='fashion_range' style={{
         height:max_height
         }}>
@@ -93,12 +92,10 @@ const M_fashion = () => {
           <div
           className='fashion_drag'
           style={style1}
-          onMouseDown={handleDragStart} 
-          onMouseMove={(e) => {handleDragMove(e, 0)}}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
+          draggable 
+          onDragStart={(e) => {handleDragStart(e, 0)}} 
           >
-            <Item kinds='모자' explainValue={explainValue} isClick={isClick}/>
+            <Item kinds='모자' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion' style={{
@@ -107,12 +104,10 @@ const M_fashion = () => {
           <div
           className='fashion_drag'
           style={style2}
-          onMouseDown={handleDragStart} 
-          onMouseMove={(e) => {handleDragMove(e, 1)}}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
+          draggable 
+          onDragStart={(e) => {handleDragStart(e, 1)}} 
           >
-            <Item kinds='상의' explainValue={explainValue} isClick={isClick}/>
+            <Item kinds='상의' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion_name fashionN2' style={{
@@ -131,12 +126,10 @@ const M_fashion = () => {
           <div
           className='fashion_drag'
           style={style3}
-          onMouseDown={handleDragStart} 
-          onMouseMove={(e) => {handleDragMove(e, 2)}}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
+          draggable 
+          onDragStart={(e) => {handleDragStart(e, 2)}} 
           >
-            <Item kinds='하의' explainValue={explainValue} isClick={isClick}/>
+            <Item kinds='하의' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion' style={{
@@ -145,12 +138,10 @@ const M_fashion = () => {
           <div
           className='fashion_drag'
           style={style4}
-          onMouseDown={handleDragStart} 
-          onMouseMove={(e) => {handleDragMove(e, 3)}}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
+          draggable 
+          onDragStart={(e) => {handleDragStart(e, 3)}} 
           >
-            <Item kinds='신발' explainValue={explainValue} isClick={isClick}/>
+            <Item kinds='신발' explainValue={explainValue}/>
           </div>
         </div>
         <div className='fashion_name fashionN4' style={{

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import fashionInfo from '../../etc/fashion.json'
+// import fashionInfo from '../../etc/fashion.json'
 
 
-const Item = ({kinds, explainValue}) => {
+const Item = ({kinds, explainValue, isClick}) => {
 
   const [data1, setData1] = useState([]);
   
@@ -61,7 +61,7 @@ const Item = ({kinds, explainValue}) => {
       height:'100%'
     }}>
       {capArr.map((e, index)=>
-        (<img draggable='false' key={e} src={e} className='fashion_item' onClick={()=>handleDetail(index+1)}/>)
+        (<img draggable='false' key={e} src={e} className='fashion_item' onClick={isClick ? ()=>handleDetail(index+1) : null}/>)
       )}
     </div>
   )
