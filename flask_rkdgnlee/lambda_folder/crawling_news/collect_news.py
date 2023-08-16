@@ -91,6 +91,6 @@ def crawling():
 
 	pd.DataFrame(dic)
 	news = pd.DataFrame(dic)
-	news.to_csv('C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\lambda_folder\\crawling_news\\news_list.csv')
+	news.to_csv('news_list.csv')
 
-#crawling()
+crawling()

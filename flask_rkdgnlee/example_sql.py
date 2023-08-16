@@ -125,6 +125,7 @@ cursor = connection.cursor()
 
 create_table_query = """
 CREATE TABLE keyword_table (
+    id NUMBER PRIMARY KEY,
     keyword VARCHAR2(255)
 )
 """
