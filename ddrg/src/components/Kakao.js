@@ -38,6 +38,7 @@ const Kakao = () => {
     },
   }));
 
+  console.log(positions)
   const handleMarkerClick = (marker) => {
     setSelectedMarker(marker);
     setIsOpen(true);
@@ -72,7 +73,7 @@ const Kakao = () => {
             <div className="wrap">
               <div className="info">
                 <div className="title">
-                  {positions[selectedMarker.id]?.title}
+                  {positions[selectedMarker.id]?.contents.slice(0,20)}
                   <div
                     className="close"
                     onClick={() => setIsOpen(false)}
@@ -81,9 +82,9 @@ const Kakao = () => {
                 </div>
                 <div className="body">
                   <div className="desc">
-                    <div className="content">
+                    {/* <div className="content">
                       {positions[selectedMarker.id]?.contents} 
-                    </div>
+                    </div> */}
                     <div className="period content">
                       {positions[selectedMarker.id]?.period}
                     </div>
