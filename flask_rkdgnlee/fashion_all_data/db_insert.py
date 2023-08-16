@@ -82,7 +82,7 @@ cursor = connection.cursor()
 # with open("C:\\Users\\gjaischool1\\OneDrive - 인공지능산업융합사업단\\바탕 화면\\gitTest\\flask_rkdgnlee\\fashion_all_data\\data.json", "r", encoding="utf-8") as json_file:
 #     json_data = json.load(json_file)
 
-# JSON 데이터 확인
+# # JSON 데이터 확인
 # print(json_data)
 
 

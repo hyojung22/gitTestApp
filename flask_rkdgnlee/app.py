@@ -103,11 +103,11 @@ def get_positions_data():
     connection = cx_Oracle.connect(DB_USERNAME, DB_PASSWORD, f'{DB_HOST}:{DB_PORT}/xe')
     cursor = connection.cursor()
     try:
-        cursor.execute("SELECT contents, period, location, lat, lng, page_url FROM positions")
+        cursor.execute("SELECT title, contents, period, location, lat, lng, page_url FROM positions")
         positions_contents = cursor.fetchall()
         positions_data = [
-            {'contents': contents, 'period': period, 'location': location, 'lat': lat, 'lng':lng, 'page_url':page_url}
-            for contents, period, location, lat, lng, page_url in positions_contents
+            {'title': title, 'contents': contents, 'period': period, 'location': location, 'lat': lat, 'lng':lng, 'page_url':page_url}
+            for title, contents, period, location, lat, lng, page_url in positions_contents
         ]
         return positions_data
     except cx_Oracle.Error as error:
