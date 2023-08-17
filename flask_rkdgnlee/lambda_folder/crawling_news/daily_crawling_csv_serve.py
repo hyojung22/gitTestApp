@@ -40,7 +40,7 @@ def module_1():
     #LDA 모델 학습
     num_topics = 4 # 원하는 토픽의 수 설정
     lda_model = LatentDirichletAllocation(n_components=num_topics, random_state= 42)
-    fitted_lda = lda_model.fit(X)
+    lda_model.fit(X)
 
 
 
@@ -69,7 +69,7 @@ def module_1():
 
     # 수정된 get_top_articles 함수
     article_topic_probabilities = lda_model.transform(tfidf_matrix)
-    num_recommendations = 3  # 추천 기사 개수 (원하는 숫자로 조정)
+    num_recommendations = 12  # 추천 기사 개수 (원하는 숫자로 조정)
 
 
 
@@ -93,7 +93,16 @@ def module_1():
         sorted_articles = sorted(topic_article_mapping[topic_idx], key=lambda x: x[1], reverse=True)
         top_recommendations.extend([article[0] for article in sorted_articles[:num_recommendations]])
 
-    my_list =  top_recommendations
+
+    unique_article_contents = set()  # set를 사용하여 중복을 자동으로 제거할 수 있는 자료구조 생성
+    filtered_top_recommendations = []
+
+    for article in top_recommendations:
+        if article not in unique_article_contents:
+            unique_article_contents.add(article)
+            filtered_top_recommendations.append(article)
+
+    my_list = filtered_top_recommendations
 
 # 추천 기사 출력
 

@@ -47,7 +47,7 @@ const Explain = ({explainInfo, explainEnd}) => {
   const img = explainInfo[4]
 
   const handleEnd = () =>{
-    explainEnd(false)
+    explainEnd(false);
   }
 
   return (
