@@ -76,7 +76,7 @@ const M_news = () => {
       keyword에 저장되어있음. */}
       <div className='right-content'>
         <ul className='keywords_box'>
-            {data2.slice(0, data2.length / 2).map((item) => (
+            {data2.slice(0, data2.length).map((item) => (
             <li className='keyword_text'>
               <a className="keyword_link" href={`https://www.google.com/search?q=${encodeURIComponent(item.keyword)}`} target="_blank" rel="noopener noreferrer">
                 {item.keyword}
