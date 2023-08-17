@@ -71,6 +71,9 @@ function RecipeSearch() {
     }
   }, [ingredients])
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
 
   return (
     <div className='center'>

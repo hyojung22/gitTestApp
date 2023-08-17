@@ -14,6 +14,10 @@ import NotFound from './pages/NotFound';
 // 패션 파트 json은 ../components/cloth/Item.jsx 에서 import
 // 축제 파트 json은 ../components/Kakao.js 에서 import
 
+useEffect(()=>{
+  window.scrollTo(0,0)
+},[])
+
 function App() {
 
   const location = useLocation();

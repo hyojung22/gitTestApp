@@ -48,8 +48,8 @@ const M_news = () => {
   // back or x 버튼 클릭 시, 스크롤 이동
   
   useEffect(()=>{
-
-  })
+    window.scrollTo(0,0)
+  },[])
 
  /** 랜덤으로 3~5개 가져오기 굉장히 짧게. 가볍게 볼 수 있게, 
   *  제목은 

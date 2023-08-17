@@ -53,6 +53,10 @@ const M_book = () => {
     setShapePosition(bookSelect(e)) // 해당 카테고리에 맞는 위치로 설정
   }
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
+
   return (
     <div className='center'>
       <div className='book_btn_box'>
